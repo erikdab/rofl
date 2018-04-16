@@ -296,9 +296,13 @@ namespace ROFL
             buttonItemTrade.Visible = sellableItem != null;
             if (sellableItem != null)
             {
+                if (!sellerOwned)
+                {
+                    toolTipInfo.SetToolTip(labelItemCost, "Selling Price");
+                    labelItemCost.Text = $"{sellableItem.SellCost:C}";
+                }
                 if (playerOwned)
                 {
-                    labelItemCost.Text = $"{sellableItem.SellCost:C}";
                     if (panelSeller.Visible)
                     {
                         buttonItemTrade.BackgroundImage = Properties.Resources.Action_Sell;
@@ -311,13 +315,13 @@ namespace ROFL
                 }
                 else if(sellerOwned)
                 {
+                    toolTipInfo.SetToolTip(labelItemCost, "Buying Price");
                     labelItemCost.Text = $"{sellableItem.BuyCost:C}";
                     buttonItemTrade.BackgroundImage = Properties.Resources.Action_Buy;
                     toolTipInfo.SetToolTip(buttonItemTrade, $"Buying this {_selectedItem.Name} will cost {sellableItem.BuyCost:C}.");
                 }
                 else
                 {
-                    labelItemCost.Text = $"{sellableItem.SellCost:C}";
                     buttonItemTrade.BackgroundImage = Properties.Resources.Action_Take;
                     toolTipInfo.SetToolTip(buttonItemTrade, $"You may take this {_selectedItem.Name} for free!");
                 }
