@@ -229,8 +229,8 @@ namespace ROFL
             {
                 if (item == _selectedItem)
                 {
-                    inventoryButton.FlatAppearance.BorderColor = Color.FromArgb(108, 90, 68);
-                    inventoryButton.FlatAppearance.BorderSize = 3;
+                    inventoryButton.FlatAppearance.BorderColor = Color.Black;
+                    inventoryButton.FlatAppearance.BorderSize = 5;
                 }
             }
         }
