@@ -27,34 +27,64 @@ namespace Engine
         }
 
         /// <summary>
-        /// Generate Randomized Loot.
+        /// Generate Randomized Loot in number up to maximum.
         /// </summary>
-        /// <param name="howMany">How many items to generate.</param>
-        /// <param name="noJunk"></param>
-        /// <returns>Array of Items</returns>
-        public Item[] Generate(int howMany, bool noJunk = false)
+        /// <param name="maximum">Maximum number of items to generate</param>
+        /// <param name="noJunk">Whether to generate junk items</param>
+        /// <returns>Item List</returns>
+        public List<Item> GenerateUpTo(int maximum, bool noJunk = false)
         {
-            var items = new Item[howMany];
+            var howMany = _random.Next(maximum);
+
+            return Generate(howMany, noJunk);
+        }
+
+        /// <summary>
+        /// Generate Randomized Loot in number between minimum and maximum.
+        /// </summary>
+        /// <param name="minimum">Minimum number of items to generate</param>
+        /// <param name="maximum">Maximum number of items to generate</param>
+        /// <param name="noJunk">Whether to generate junk items</param>
+        /// <returns>Item List</returns>
+        public List<Item> GenerateInRange(int minimum, int maximum, bool noJunk = false)
+        {
+            var howMany = _random.Next(minimum, maximum);
+
+            return Generate(howMany, noJunk);
+        }
+
+        /// <summary>
+        /// Generate Randomized Loot in exact number.
+        /// </summary>
+        /// <param name="howMany">Number of items to generate.</param>
+        /// <param name="noJunk">Whether to generate junk items</param>
+        /// <returns>Item List</returns>
+        public List<Item> Generate(int howMany, bool noJunk = false)
+        {
+            var items = new List<Item>(howMany);
+
+            var startFrom = noJunk ? 40 : 0;
 
             for (var i = 0; i < howMany; i++)
             {
-                items[i] = SelectItem(_random.Next(100), noJunk);
+                items.Add(SelectItem(_random.Next(startFrom, 100)));
             }
 
             return items;
         }
 
         /// <summary>
-        /// Select given item.
+        /// Item Selector from possible items.
         /// </summary>
-        /// <param name="number">Item Number.</param>
-        /// <returns>Selected Item.</returns>
-        public Item SelectItem(int number, bool noJunk)
+        /// <param name="number">Number between 0 and 100 - used to select item</param>
+        /// <returns>Item</returns>
+        public Item SelectItem(int number)
         {
-            if (number < 40)
+            if (number >= 0 && number < 40)
             {
                 return new Junk(_random);
             }
+
             if (number < 65)
             {
                 return new HealthPotion(_random);
@@ -70,7 +100,7 @@ namespace Engine
                 return new Trophy(_random);
             }
 
-            throw new Exception("No such item exists.");
+            throw new ArgumentOutOfRangeException("LootGenerator: Item Number out of range!");
         }
     }
 }

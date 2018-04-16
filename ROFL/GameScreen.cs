@@ -46,10 +46,6 @@ namespace ROFL
 
             _game = game;
 
-            // Initial Loot
-            var lootedItems = _game.LootGenerator.Generate(4);
-            _game.Character.Items.AddRange(lootedItems);
-
             UpdateControls();
 
             GoFullscreen(true);

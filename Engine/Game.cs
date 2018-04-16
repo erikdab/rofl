@@ -70,11 +70,6 @@ namespace Engine
         public LootGenerator LootGenerator { get; protected set; }
 
         /// <summary>
-        /// Items in Loot.
-        /// </summary>
-        public Item[] ItemsInLoot { get; set; }
-
-        /// <summary>
         /// Current Game Time.
         /// </summary>
         public string GameTime => $"{_gameHour}:{_gameMinute:00}:{_gameSecond:00}";
@@ -133,9 +128,12 @@ namespace Engine
         /// <param name="character">Player Character</param>        
         public Game(Character character)
         {
-            LootGenerator = new LootGenerator(Random);
             Character = character;
-            SetupStore();
+
+            LootGenerator = new LootGenerator(Random);
+            // Character starting items:
+            Character.Items.AddRange(LootGenerator.GenerateInRange(3, 5, true));
+            StockSellerInventory();
         }
 
         /// <summary>
@@ -149,7 +147,7 @@ namespace Engine
             GameLocation = gameLocation;
             OpenedRooms = 0;
             DungeonLevel = 0;
-            SetupStore();
+            StockSellerInventory();
         }
 
         /// <summary>
@@ -225,10 +223,9 @@ namespace Engine
         /// <summary>
         /// Setup Store.
         /// </summary>
-        public void SetupStore()
+        public void StockSellerInventory()
         {
-            var storeItems = LootGenerator.Generate(Seller.InventorySize);
-            Seller.Items = storeItems.ToList();
+            Seller.Items = LootGenerator.Generate(Seller.InventorySize, true);
         }
 
         /// <summary>
