@@ -30,7 +30,7 @@ namespace ROFL
         /// <summary>
         /// How many Store Items can fit per Page.
         /// </summary>
-        private int _storeItemsPerPage = 32;
+        private int _storeItemsPerPage = 16;
 
         /// <summary>
         /// Max Store Pages.
@@ -70,9 +70,9 @@ namespace ROFL
         private void UpdateControls()
         {
             UpdatePlayerPanel();
-            UpdateInventoryPanel();
+            UpdateCharacterInventoryPanel();
             UpdateItemPanel();
-            UpdateStorePanel();
+            UpdateSellerInventoryPanel();
             UpdateLocation();
             UpdateRoom();
         }
@@ -92,7 +92,7 @@ namespace ROFL
             if (_game.Enemy?.Items.Count > 0 || _game.Enemy?.Money > 0)
             {
                 panelRoomLoot.Visible = true;
-                UpdateRoomLoot();
+                UpdateEnemyInventoryPanel();
             }
         }
 
@@ -151,18 +151,18 @@ namespace ROFL
                 _game.Character.LevelUpTry();
             }
 
-            labelPlayerName.Text = _game.Character.Name;
+            labelCharacterName.Text = _game.Character.Name;
 
-            labelLevel.Text = _game.Character.Level.ToString();
+            labelCharacterLevel.Text = _game.Character.Level.ToString();
             labelCharacterMoney.Text = $"{_game.Character.Money:C}";
 
-            progressBarHealth.Maximum = _game.Character.MaxHealth;
-            progressBarHealth.Value = _game.Character.Health;
-            toolTipInfo.SetToolTip(progressBarHealth, HealthDescriptor());
+            progressBarCharacterHealth.Maximum = _game.Character.MaxHealth;
+            progressBarCharacterHealth.Value = _game.Character.Health;
+            toolTipInfo.SetToolTip(progressBarCharacterHealth, HealthDescriptor());
 
-            progressBarExperience.Maximum = _game.Character.LevelUpCost;
-            progressBarExperience.Value = _game.Character.Experience;
-            toolTipInfo.SetToolTip(progressBarExperience, $"You still need {_game.Character.LevelUpRemainingCost} Experience to Level Up.");
+            progressBarCharacterExperience.Maximum = _game.Character.LevelUpCost;
+            progressBarCharacterExperience.Value = _game.Character.Experience;
+            toolTipInfo.SetToolTip(progressBarCharacterExperience, $"You still need {_game.Character.LevelUpRemainingCost} Experience to Level Up.");
         }
         
         /// <summary>
@@ -212,12 +212,12 @@ namespace ROFL
         /// </summary>
         private void UpdateInventoryItem(IEntity entity, string inventoryType, int buttonIndex, int itemIndex)
         {
-            var inventoryButton = (Button)(Controls.Find($"button{inventoryType}{buttonIndex}", true)[0]);
+            var inventoryButton = (Button)(Controls.Find($"button{inventoryType}Inventory{buttonIndex}", true)[0]);
             var emptySlot = entity.Items.Count <= itemIndex;
             inventoryButton.Enabled = ! emptySlot;
             if (emptySlot)
             {
-                inventoryButton.BackgroundImage = Properties.Resources.Item_Blank;
+                inventoryButton.BackgroundImage = null;
                 return;
             }
             var item = entity.Items[itemIndex];
@@ -228,25 +228,25 @@ namespace ROFL
         /// <summary>
         /// Update Inventory Panel.
         /// </summary>
-        private void UpdateInventoryPanel()
+        private void UpdateCharacterInventoryPanel()
         {
             for (var index = 0; index < _game.Character.InventorySize; index++)
             {
-                UpdateInventoryItem(_game.Character, "Inventory", index, index);
+                UpdateInventoryItem(_game.Character, "Character", index, index);
             }
         }
 
         /// <summary>
         /// Update Store Panel.
         /// </summary>
-        private void UpdateStorePanel()
+        private void UpdateSellerInventoryPanel()
         {
-            if (!panelStore.Visible) return;
+            if (!panelSeller.Visible) return;
 
             for (var buttonIndex = 0; buttonIndex < _storeItemsPerPage; buttonIndex++)
             {
                 var itemIndex = _storeItemsPerPage * _storePage + buttonIndex;
-                UpdateInventoryItem(_game.Seller, "Store", buttonIndex, itemIndex);
+                UpdateInventoryItem(_game.Seller, "Seller", buttonIndex, itemIndex);
             }
 
             labelStorePage.Text = $"Page: {_storePage + 1}";
@@ -255,7 +255,7 @@ namespace ROFL
         /// <summary>
         /// Update Room Loot Controls
         /// </summary>
-        private void UpdateRoomLoot()
+        private void UpdateEnemyInventoryPanel()
         {
             if (!panelRoomLoot.Visible) return;
 
@@ -263,7 +263,7 @@ namespace ROFL
 
             for (var index = 0; index < _game.Enemy.InventorySize; index++)
             {
-                UpdateInventoryItem(_game.Enemy, "RoomInventory", index, index);
+                UpdateInventoryItem(_game.Enemy, "Enemy", index, index);
             }
         }
 
@@ -276,7 +276,7 @@ namespace ROFL
             var sellerOwned = _game.Seller.OwnsItem(_selectedItem);
             labelItemPanelTitle.Text = playerOwned ? "Player Item" : sellerOwned ? "Seller Item" : $"{_game.Enemy.Name} Item";
 
-            panelItem.Visible = panelInventory.Visible && _selectedItem != null;
+            panelItem.Visible = panelCharacterInventory.Visible && _selectedItem != null;
 
             if (_selectedItem == null) return;
 
@@ -299,7 +299,7 @@ namespace ROFL
                 if (playerOwned)
                 {
                     labelItemCost.Text = $"{sellableItem.SellCost:C}";
-                    if (panelStore.Visible)
+                    if (panelSeller.Visible)
                     {
                         buttonItemTrade.BackgroundImage = Properties.Resources.Action_Sell;
                         toolTipInfo.SetToolTip(buttonItemTrade, $"Selling this {_selectedItem.Name} will cash in {sellableItem.SellCost:C}.");
@@ -431,9 +431,9 @@ namespace ROFL
         /// </summary>
         private void ToggleInventory()
         {
-            panelInventory.Visible = !panelInventory.Visible;
-            buttonInventoryToggle.BackgroundImage =
-                panelInventory.Visible ? Properties.Resources.down : Properties.Resources.up;
+            panelCharacterInventory.Visible = !panelCharacterInventory.Visible;
+            buttonCharacterInventoryToggle.BackgroundImage =
+                panelCharacterInventory.Visible ? Properties.Resources.down : Properties.Resources.up;
 
             UpdateItemPanel();
         }
@@ -443,7 +443,7 @@ namespace ROFL
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonInventoryToggle_Click(object sender, EventArgs e)
+        private void buttonCharacterInventoryToggle_Click(object sender, EventArgs e)
         {
             ToggleInventory();
         }
@@ -460,11 +460,11 @@ namespace ROFL
             var buttonNameNumeric = new string(buttonSender.Name.Where(char.IsDigit).ToArray());
             var inventoryNumber = int.Parse(buttonNameNumeric);
             IEntity entity;
-            if (buttonSender.Name.Contains("RoomInventory"))
+            if (buttonSender.Name.Contains("Enemy"))
             {
                 entity = _game.Enemy;
             }
-            else if (buttonSender.Name.Contains("Inventory"))
+            else if (buttonSender.Name.Contains("Character"))
             {
                 entity = _game.Character;
             }
@@ -586,7 +586,7 @@ namespace ROFL
             {
                 _storePage = MaxStorePage-1;
             }
-            UpdateStorePanel();
+            UpdateSellerInventoryPanel();
         }
 
         /// <summary>
@@ -601,7 +601,7 @@ namespace ROFL
             {
                 _storePage = 0;
             }
-            UpdateStorePanel();
+            UpdateSellerInventoryPanel();
         }
 
         /// <summary>
@@ -639,8 +639,8 @@ namespace ROFL
             switch (_game.GameLocation)
             {
                 case GameLocation.Village:
-                    panelStore.Visible = !panelStore.Visible;
-                    UpdateStorePanel();
+                    panelSeller.Visible = !panelSeller.Visible;
+                    UpdateSellerInventoryPanel();
                     UpdateItemPanel();
                     break;
                 case GameLocation.Dungeon:
@@ -688,7 +688,7 @@ namespace ROFL
                     break;
             }
             UpdateLocation();
-            panelStore.Visible = false;
+            panelSeller.Visible = false;
             if (! _game.Character.OwnsItem(_selectedItem))
             {
                 _selectedItem = null;
@@ -727,7 +727,7 @@ namespace ROFL
             _game.Enemy.Money = 0;
 
             UpdatePlayerPanel();
-            UpdateRoomLoot();
+            UpdateEnemyInventoryPanel();
         }
 
         /// <summary>

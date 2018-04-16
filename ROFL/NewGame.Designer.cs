@@ -33,7 +33,7 @@
             this.pictureBoxGoal = new System.Windows.Forms.PictureBox();
             this.labelNewGame = new System.Windows.Forms.Label();
             this.textBoxPlayerName = new System.Windows.Forms.TextBox();
-            this.labelPlayerName = new System.Windows.Forms.Label();
+            this.labelCharacterName = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGoal)).BeginInit();
@@ -85,16 +85,16 @@
             this.textBoxPlayerName.TabIndex = 6;
             this.textBoxPlayerName.Text = "Joan de Arc";
             // 
-            // labelPlayerName
+            // labelCharacterName
             // 
-            this.labelPlayerName.AutoSize = true;
-            this.labelPlayerName.BackColor = System.Drawing.Color.Transparent;
-            this.labelPlayerName.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPlayerName.Location = new System.Drawing.Point(193, 232);
-            this.labelPlayerName.Name = "labelPlayerName";
-            this.labelPlayerName.Size = new System.Drawing.Size(119, 28);
-            this.labelPlayerName.TabIndex = 7;
-            this.labelPlayerName.Text = "Player Name:";
+            this.labelCharacterName.AutoSize = true;
+            this.labelCharacterName.BackColor = System.Drawing.Color.Transparent;
+            this.labelCharacterName.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCharacterName.Location = new System.Drawing.Point(193, 232);
+            this.labelCharacterName.Name = "labelCharacterName";
+            this.labelCharacterName.Size = new System.Drawing.Size(119, 28);
+            this.labelCharacterName.TabIndex = 7;
+            this.labelCharacterName.Text = "Player Name:";
             // 
             // buttonStart
             // 
@@ -135,7 +135,7 @@
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.pictureBoxGoal);
             this.Controls.Add(this.buttonStart);
-            this.Controls.Add(this.labelPlayerName);
+            this.Controls.Add(this.labelCharacterName);
             this.Controls.Add(this.textBoxPlayerName);
             this.Controls.Add(this.labelNewGame);
             this.Controls.Add(this.labelNewGameHelp);
@@ -155,7 +155,7 @@
         private System.Windows.Forms.Label labelNewGameHelp;
         private System.Windows.Forms.Label labelNewGame;
         private System.Windows.Forms.TextBox textBoxPlayerName;
-        private System.Windows.Forms.Label labelPlayerName;
+        private System.Windows.Forms.Label labelCharacterName;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonClose;
     }
