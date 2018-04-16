@@ -70,9 +70,8 @@ namespace ROFL
         private void UpdateControls()
         {
             UpdatePlayerPanel();
-            UpdateCharacterInventoryPanel();
+            UpdateInventoryPanels();
             UpdateItemPanel();
-            UpdateSellerInventoryPanel();
             UpdateLocation();
             UpdateRoom();
         }
@@ -215,14 +214,35 @@ namespace ROFL
             var inventoryButton = (Button)(Controls.Find($"button{inventoryType}Inventory{buttonIndex}", true)[0]);
             var emptySlot = entity.Items.Count <= itemIndex;
             inventoryButton.Enabled = ! emptySlot;
+            inventoryButton.FlatAppearance.BorderSize = 0;
             if (emptySlot)
             {
                 inventoryButton.BackgroundImage = null;
                 return;
             }
+
             var item = entity.Items[itemIndex];
             inventoryButton.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"Item_{item.UniqueNameId}");
-            toolTipInfo.SetToolTip(inventoryButton, $"{item.Name}{Environment.NewLine}{item.Description}");
+            toolTipInfo.SetToolTip(inventoryButton, $"{item.Name}{Environment.NewLine}{Environment.NewLine}{item.Description}");
+            
+            if (_selectedItem != null)
+            {
+                if (item == _selectedItem)
+                {
+                    inventoryButton.FlatAppearance.BorderColor = Color.FromArgb(108, 90, 68);
+                    inventoryButton.FlatAppearance.BorderSize = 3;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Update all Inventory Panels
+        /// </summary>
+        private void UpdateInventoryPanels()
+        {
+            UpdateCharacterInventoryPanel();
+            UpdateSellerInventoryPanel();
+            UpdateEnemyInventoryPanel();
         }
 
         /// <summary>
@@ -483,6 +503,7 @@ namespace ROFL
             // Select only if it is a new item, otherwise unselect.
             _selectedItem = _selectedItem != newSelection ? entity.Items[inventoryNumber] : null;
 
+            UpdateInventoryPanels();
             UpdateItemPanel();
         }
 
@@ -493,12 +514,13 @@ namespace ROFL
         /// <param name="item">Item, which action's we are performing</param>
         /// <param name="verbName">Action in verb form</param>
         /// <param name="nounName">Action in noun form</param>
-        private void DoItemActionTry(Action action, Item item, string verbName, string nounName)
+        /// <param name="removeSelected"></param>
+        private void DoItemActionTry(Action action, Item item, string verbName, string nounName, bool removeSelected = true)
         {
             try
             {
                 action.Invoke();
-                _selectedItem = null;
+                if(removeSelected) _selectedItem = null;
                 UpdateControls();
             }
             catch (Exception ex)
@@ -533,9 +555,11 @@ namespace ROFL
             if (_selectedItem != null && _selectedItem is ITradeable tradeableItem)
             {
                 Action action;
+                bool removeSelected = false;
                 if (_game.Character.OwnsItem(_selectedItem))
                 {
                     action = () => tradeableItem.SellTry(_game.Character, _game.Seller);
+                    removeSelected = true;
                 }
                 else if(_game.Seller.OwnsItem(_selectedItem))
                 {
@@ -552,7 +576,8 @@ namespace ROFL
                 DoItemActionTry(action,
                     _selectedItem,
                     "trade",
-                    "Trading");
+                    "Trading",
+                    removeSelected);
             }
         }
 
