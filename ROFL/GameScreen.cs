@@ -288,14 +288,23 @@ namespace ROFL
 			UpdateEnemyInventoryPanel();
 		}
 
+        /// <summary>
+        /// Is Entity Inventory Panel Visible.
+        /// </summary>
+        /// <param name="entity">Entity to check</param>
+	    private bool IsEntityInventoryPanelVisible(GameEntity entity)
+	    {
+	        return ((Panel)(Controls.Find($"panel{entity}InventoryItems", true)[0])).Visible;
+        }
+
+
 	    /// <summary>
 	    /// Update Inventory Panel.
 	    /// Combine these into one function, which handles pagination too.
 	    /// </summary>
 	    private void UpdateEntityInventoryPanel(GameEntity entity)
 	    {
-	        var entityInventoryPanel = (Panel)(Controls.Find($"panel{entity.ToString()}InventoryItems", true)[0]);
-	        if (!entityInventoryPanel.Visible) return;
+	        if (!IsEntityInventoryPanelVisible(entity)) return;
 
 	        if (_inventoryPage[entity] >= MaxInventoryPages(entity))
 	        {
@@ -308,8 +317,11 @@ namespace ROFL
 	            UpdateInventoryItem(_game.GetEntity(entity), entity.ToString(), buttonIndex, itemIndex);
 	        }
 
-	        var entityPageLabel = (Label)(Controls.Find($"label{entity.ToString()}InventoryPage", true)[0]);
-            entityPageLabel.Text = $"Page: {_inventoryPage[entity] + 1}";
+	        var controls = Controls.Find($"label{entity}InventoryPage", true);
+	        if (controls.Length == 1)
+	        {
+	            ((Label)(controls[0])).Text = $"Page: {_inventoryPage[entity] + 1}";
+            }
 	    }
 
         /// <summary>
@@ -319,15 +331,6 @@ namespace ROFL
         private void UpdateCharacterInventoryPanel()
 		{
             UpdateEntityInventoryPanel(GameEntity.Character);
-			//if (!panelCharacterInventory.Visible) return;
-
-		 //   for (var buttonIndex = 0; buttonIndex < _inventoryPageSize[GameEntity.Character]; buttonIndex++)
-		 //   {
-		 //       var itemIndex = _inventoryPageSize[GameEntity.Character] * _inventoryPage[GameEntity.Character] + buttonIndex;
-		 //       UpdateInventoryItem(_game.Character, "Character", buttonIndex, itemIndex);
-		 //   }
-
-		 //   labelCharacterInventoryPage.Text = $"Page: {_inventoryPage[GameEntity.Character] + 1}";
         }
 
 		/// <summary>
@@ -336,16 +339,6 @@ namespace ROFL
 		private void UpdateSellerInventoryPanel()
 		{
 		    UpdateEntityInventoryPanel(GameEntity.Seller);
-
-   //         if (!panelSeller.Visible) return;
-
-			//for (var buttonIndex = 0; buttonIndex < _inventoryPageSize[GameEntity.Seller]; buttonIndex++)
-			//{
-			//	var itemIndex = _inventoryPageSize[GameEntity.Seller] * _inventoryPage[GameEntity.Seller] + buttonIndex;
-			//	UpdateInventoryItem(_game.Seller, "Seller", buttonIndex, itemIndex);
-			//}
-
-			//labelStorePage.Text = $"Page: {_inventoryPage[GameEntity.Seller] + 1}";
 		}
 
 		/// <summary>
@@ -353,14 +346,12 @@ namespace ROFL
 		/// </summary>
 		private void UpdateEnemyInventoryPanel()
 		{
-			if (!panelRoomLoot.Visible) return;
+		    var entity = GameEntity.Enemy;
+            if (!IsEntityInventoryPanelVisible(entity)) return;
 
-			labelRoomLootMoney.Text = $"{_game.Enemy.Money:C}";
+            labelRoomLootMoney.Text = $"{_game.Enemy.Money:C}";
 
-			for (var index = 0; index < _inventoryPageSize[GameEntity.Enemy]; index++)
-			{
-				UpdateInventoryItem(_game.Enemy, "Enemy", index, index);
-			}
+            UpdateEntityInventoryPanel(entity);
 		}
 
 		/// <summary>
