@@ -141,33 +141,29 @@ namespace Engine
 
             LootGenerator = new LootGenerator(Random);
             // Character starting items:
-            Character.Items.AddRange(LootGenerator.GenerateInRange(3, 5, true));
+            // Character.Items.AddRange(LootGenerator.GenerateInRange(3, 5, true));
+            Character.Items.AddRange(LootGenerator.Generate(16, true));
             StockSellerInventory();
         }
 
         /// <summary>
         /// Get the item owner.
         /// </summary>
-        /// <param name="item">Item to search owner of</param>
+        /// <param name="entityEnum">Item to search owner of</param>
         /// <returns>Owner</returns>
-        public IEntity GetItemOwner(Item item)
+        public IEntity GetEntity(GameEntity entityEnum)
         {
-            if (Character.OwnsItem(item))
+            switch (entityEnum)
             {
-                return Character;
+                case GameEntity.Character:
+                    return Character;
+                case GameEntity.Seller:
+                    return Seller;
+                case GameEntity.Enemy:
+                    return Enemy;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(entityEnum), entityEnum, null);
             }
-
-            if (Seller.OwnsItem(item))
-            {
-                return Seller;
-            }
-
-            if (Enemy.OwnsItem(item))
-            {
-                return Enemy;
-            }
-
-            throw new Exception($"No one owns this item: {item.Name}!");
         }
 
         /// <summary>
