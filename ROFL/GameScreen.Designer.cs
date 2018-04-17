@@ -89,6 +89,7 @@
             this.labelGameTime = new System.Windows.Forms.Label();
             this.labelGameTimeFor = new System.Windows.Forms.Label();
             this.panelCharacterInventory = new System.Windows.Forms.Panel();
+            this.pictureBoxCharacterInventoryOwner = new System.Windows.Forms.PictureBox();
             this.labelCharacterInventoryTitle = new System.Windows.Forms.Label();
             this.panelItem = new System.Windows.Forms.Panel();
             this.pictureBoxItemOwner = new System.Windows.Forms.PictureBox();
@@ -101,6 +102,7 @@
             this.pictureBoxItemCost = new System.Windows.Forms.PictureBox();
             this.labelItemName = new System.Windows.Forms.Label();
             this.panelSeller = new System.Windows.Forms.Panel();
+            this.SellerInventoryOwner = new System.Windows.Forms.PictureBox();
             this.labelSellerItemsFor = new System.Windows.Forms.Label();
             this.labelSellerInfo = new System.Windows.Forms.Label();
             this.panelSellerInventoryItems = new System.Windows.Forms.Panel();
@@ -137,6 +139,7 @@
             this.pictureBoxExperienceGain = new System.Windows.Forms.PictureBox();
             this.labelRoomEvent = new System.Windows.Forms.Label();
             this.panelRoomLoot = new System.Windows.Forms.Panel();
+            this.pictureBoxEnemyInventoryOwner = new System.Windows.Forms.PictureBox();
             this.panelEnemyInventoryItems = new System.Windows.Forms.Panel();
             this.buttonEnemyInventory7 = new System.Windows.Forms.Button();
             this.buttonEnemyInventory6 = new System.Windows.Forms.Button();
@@ -153,9 +156,6 @@
             this.pictureBoxRoomLootMoney = new System.Windows.Forms.PictureBox();
             this.labelRoomEventFor = new System.Windows.Forms.Label();
             this.labelRoom = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelCharacter.SuspendLayout();
             this.panelCharacterExperience.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterExperience)).BeginInit();
@@ -163,6 +163,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterMoney)).BeginInit();
             this.panelCharacterInventoryItems.SuspendLayout();
             this.panelCharacterInventory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterInventoryOwner)).BeginInit();
             this.panelItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemOwner)).BeginInit();
             this.panelItemImage.SuspendLayout();
@@ -170,18 +171,17 @@
             this.panelItemCost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemCost)).BeginInit();
             this.panelSeller.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SellerInventoryOwner)).BeginInit();
             this.panelSellerInventoryItems.SuspendLayout();
             this.panelVillage.SuspendLayout();
             this.panelRoom.SuspendLayout();
             this.panelExperienceGain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExperienceGain)).BeginInit();
             this.panelRoomLoot.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEnemyInventoryOwner)).BeginInit();
             this.panelEnemyInventoryItems.SuspendLayout();
             this.panelRoomLootMoney.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRoomLootMoney)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // toolTipInfo
@@ -255,10 +255,11 @@
             // 
             // labelCharacterLevel
             // 
-            this.labelCharacterLevel.BackColor = System.Drawing.SystemColors.Control;
+            this.labelCharacterLevel.BackColor = System.Drawing.Color.Transparent;
             this.labelCharacterLevel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelCharacterLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelCharacterLevel.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharacterLevel.Location = new System.Drawing.Point(102, 86);
+            this.labelCharacterLevel.Location = new System.Drawing.Point(30, 0);
             this.labelCharacterLevel.Name = "labelCharacterLevel";
             this.labelCharacterLevel.Size = new System.Drawing.Size(32, 32);
             this.labelCharacterLevel.TabIndex = 80;
@@ -532,10 +533,10 @@
             // 
             // progressBarCharacterExperience
             // 
-            this.progressBarCharacterExperience.Location = new System.Drawing.Point(31, -1);
+            this.progressBarCharacterExperience.Location = new System.Drawing.Point(62, -1);
             this.progressBarCharacterExperience.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.progressBarCharacterExperience.Name = "progressBarCharacterExperience";
-            this.progressBarCharacterExperience.Size = new System.Drawing.Size(185, 32);
+            this.progressBarCharacterExperience.Size = new System.Drawing.Size(187, 34);
             this.progressBarCharacterExperience.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBarCharacterExperience.TabIndex = 123;
             this.toolTipInfo.SetToolTip(this.progressBarCharacterExperience, "You still need 0 Experience to Level Up.");
@@ -646,7 +647,6 @@
             this.panelCharacter.Controls.Add(this.labelCharacterLevelFor);
             this.panelCharacter.Controls.Add(this.labelCharacterHealthFor);
             this.panelCharacter.Controls.Add(this.progressBarCharacterHealth);
-            this.panelCharacter.Controls.Add(this.labelCharacterLevel);
             this.panelCharacter.Controls.Add(this.labelCharacterTitle);
             this.panelCharacter.Controls.Add(this.labelCharacterName);
             this.panelCharacter.Controls.Add(this.labelCharacterNameFor);
@@ -659,13 +659,13 @@
             // 
             this.panelCharacterExperience.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelCharacterExperience.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelCharacterExperience.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelCharacterExperience.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCharacterExperience.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelCharacterExperience.Controls.Add(this.labelCharacterLevel);
             this.panelCharacterExperience.Controls.Add(this.progressBarCharacterExperience);
             this.panelCharacterExperience.Controls.Add(this.pictureBoxCharacterExperience);
-            this.panelCharacterExperience.Location = new System.Drawing.Point(133, 86);
+            this.panelCharacterExperience.Location = new System.Drawing.Point(101, 86);
             this.panelCharacterExperience.Name = "panelCharacterExperience";
-            this.panelCharacterExperience.Size = new System.Drawing.Size(217, 32);
+            this.panelCharacterExperience.Size = new System.Drawing.Size(249, 32);
             this.panelCharacterExperience.TabIndex = 122;
             // 
             // pictureBoxCharacterExperience
@@ -674,7 +674,7 @@
             this.pictureBoxCharacterExperience.BackgroundImage = global::ROFL.Properties.Resources.Experience;
             this.pictureBoxCharacterExperience.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxCharacterExperience.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxCharacterExperience.Location = new System.Drawing.Point(-1, -1);
+            this.pictureBoxCharacterExperience.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxCharacterExperience.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxCharacterExperience.Name = "pictureBoxCharacterExperience";
             this.pictureBoxCharacterExperience.Size = new System.Drawing.Size(32, 32);
@@ -697,7 +697,7 @@
             // 
             this.panelCharacterMoney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelCharacterMoney.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelCharacterMoney.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelCharacterMoney.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panelCharacterMoney.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelCharacterMoney.Controls.Add(this.labelCharacterMoney);
             this.panelCharacterMoney.Controls.Add(this.pictureBoxCharacterMoney);
@@ -995,6 +995,7 @@
             this.labelGameTime.BackColor = System.Drawing.Color.Transparent;
             this.labelGameTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelGameTime.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGameTime.Image = global::ROFL.Properties.Resources.background1_Game;
             this.labelGameTime.Location = new System.Drawing.Point(871, 12);
             this.labelGameTime.Name = "labelGameTime";
             this.labelGameTime.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1022,13 +1023,26 @@
             this.panelCharacterInventory.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
             this.panelCharacterInventory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelCharacterInventory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCharacterInventory.Controls.Add(this.pictureBox1);
+            this.panelCharacterInventory.Controls.Add(this.pictureBoxCharacterInventoryOwner);
             this.panelCharacterInventory.Controls.Add(this.panelCharacterInventoryItems);
             this.panelCharacterInventory.Controls.Add(this.labelCharacterInventoryTitle);
             this.panelCharacterInventory.Location = new System.Drawing.Point(655, 76);
             this.panelCharacterInventory.Name = "panelCharacterInventory";
             this.panelCharacterInventory.Size = new System.Drawing.Size(311, 307);
             this.panelCharacterInventory.TabIndex = 85;
+            // 
+            // pictureBoxCharacterInventoryOwner
+            // 
+            this.pictureBoxCharacterInventoryOwner.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxCharacterInventoryOwner.BackgroundImage = global::ROFL.Properties.Resources.Inventory_Character;
+            this.pictureBoxCharacterInventoryOwner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxCharacterInventoryOwner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxCharacterInventoryOwner.Location = new System.Drawing.Point(-1, -1);
+            this.pictureBoxCharacterInventoryOwner.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxCharacterInventoryOwner.Name = "pictureBoxCharacterInventoryOwner";
+            this.pictureBoxCharacterInventoryOwner.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxCharacterInventoryOwner.TabIndex = 152;
+            this.pictureBoxCharacterInventoryOwner.TabStop = false;
             // 
             // labelCharacterInventoryTitle
             // 
@@ -1114,6 +1128,7 @@
             this.labelItemInfo.BackColor = System.Drawing.Color.Transparent;
             this.labelItemInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelItemInfo.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelItemInfo.Image = global::ROFL.Properties.Resources.background1_Game;
             this.labelItemInfo.Location = new System.Drawing.Point(16, 156);
             this.labelItemInfo.Name = "labelItemInfo";
             this.labelItemInfo.Size = new System.Drawing.Size(277, 115);
@@ -1124,7 +1139,7 @@
             // 
             this.panelItemActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelItemActions.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelItemActions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelItemActions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panelItemActions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelItemActions.Controls.Add(this.buttonItemUse);
             this.panelItemActions.Controls.Add(this.buttonTrash);
@@ -1138,7 +1153,7 @@
             // 
             this.panelItemCost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelItemCost.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelItemCost.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelItemCost.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panelItemCost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelItemCost.Controls.Add(this.labelItemCost);
             this.panelItemCost.Controls.Add(this.pictureBoxItemCost);
@@ -1177,7 +1192,7 @@
             this.panelSeller.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
             this.panelSeller.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelSeller.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelSeller.Controls.Add(this.pictureBox2);
+            this.panelSeller.Controls.Add(this.SellerInventoryOwner);
             this.panelSeller.Controls.Add(this.labelSellerItemsFor);
             this.panelSeller.Controls.Add(this.labelSellerInfo);
             this.panelSeller.Controls.Add(this.panelSellerInventoryItems);
@@ -1191,6 +1206,19 @@
             this.panelSeller.Size = new System.Drawing.Size(311, 603);
             this.panelSeller.TabIndex = 102;
             this.panelSeller.Visible = false;
+            // 
+            // SellerInventoryOwner
+            // 
+            this.SellerInventoryOwner.BackColor = System.Drawing.Color.Transparent;
+            this.SellerInventoryOwner.BackgroundImage = global::ROFL.Properties.Resources.Inventory_Seller;
+            this.SellerInventoryOwner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SellerInventoryOwner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SellerInventoryOwner.Location = new System.Drawing.Point(-1, -1);
+            this.SellerInventoryOwner.Margin = new System.Windows.Forms.Padding(0);
+            this.SellerInventoryOwner.Name = "SellerInventoryOwner";
+            this.SellerInventoryOwner.Size = new System.Drawing.Size(40, 40);
+            this.SellerInventoryOwner.TabIndex = 153;
+            this.SellerInventoryOwner.TabStop = false;
             // 
             // labelSellerItemsFor
             // 
@@ -1511,6 +1539,7 @@
             this.labelLocation.BackColor = System.Drawing.Color.Transparent;
             this.labelLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelLocation.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLocation.Image = global::ROFL.Properties.Resources.background1_Game;
             this.labelLocation.Location = new System.Drawing.Point(126, 12);
             this.labelLocation.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.labelLocation.Name = "labelLocation";
@@ -1656,7 +1685,7 @@
             // panelExperienceGain
             // 
             this.panelExperienceGain.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelExperienceGain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelExperienceGain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panelExperienceGain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelExperienceGain.Controls.Add(this.labelExperienceGain);
             this.panelExperienceGain.Controls.Add(this.pictureBoxExperienceGain);
@@ -1694,7 +1723,7 @@
             this.panelRoomLoot.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
             this.panelRoomLoot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelRoomLoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelRoomLoot.Controls.Add(this.pictureBox3);
+            this.panelRoomLoot.Controls.Add(this.pictureBoxEnemyInventoryOwner);
             this.panelRoomLoot.Controls.Add(this.panelEnemyInventoryItems);
             this.panelRoomLoot.Controls.Add(this.labelRoomLootItems);
             this.panelRoomLoot.Controls.Add(this.labelRoomLootMoneyFor);
@@ -1705,6 +1734,19 @@
             this.panelRoomLoot.Size = new System.Drawing.Size(311, 290);
             this.panelRoomLoot.TabIndex = 107;
             this.panelRoomLoot.Visible = false;
+            // 
+            // pictureBoxEnemyInventoryOwner
+            // 
+            this.pictureBoxEnemyInventoryOwner.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxEnemyInventoryOwner.BackgroundImage = global::ROFL.Properties.Resources.Inventory_Enemy;
+            this.pictureBoxEnemyInventoryOwner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxEnemyInventoryOwner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxEnemyInventoryOwner.Location = new System.Drawing.Point(-1, -1);
+            this.pictureBoxEnemyInventoryOwner.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxEnemyInventoryOwner.Name = "pictureBoxEnemyInventoryOwner";
+            this.pictureBoxEnemyInventoryOwner.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxEnemyInventoryOwner.TabIndex = 154;
+            this.pictureBoxEnemyInventoryOwner.TabStop = false;
             // 
             // panelEnemyInventoryItems
             // 
@@ -1884,7 +1926,7 @@
             // 
             this.panelRoomLootMoney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelRoomLootMoney.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelRoomLootMoney.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelRoomLootMoney.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panelRoomLootMoney.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelRoomLootMoney.Controls.Add(this.buttonRoomLootTakeMoney);
             this.panelRoomLootMoney.Controls.Add(this.labelRoomLootMoney);
@@ -1928,45 +1970,6 @@
             this.labelRoom.TabIndex = 78;
             this.labelRoom.Text = "Room";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::ROFL.Properties.Resources.Inventory_Character;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox1.TabIndex = 152;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImage = global::ROFL.Properties.Resources.Inventory_Seller;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox2.TabIndex = 153;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.BackgroundImage = global::ROFL.Properties.Resources.Inventory_Enemy;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox3.TabIndex = 154;
-            this.pictureBox3.TabStop = false;
-            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2007,6 +2010,7 @@
             this.panelCharacterInventoryItems.ResumeLayout(false);
             this.panelCharacterInventory.ResumeLayout(false);
             this.panelCharacterInventory.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterInventoryOwner)).EndInit();
             this.panelItem.ResumeLayout(false);
             this.panelItem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemOwner)).EndInit();
@@ -2017,6 +2021,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemCost)).EndInit();
             this.panelSeller.ResumeLayout(false);
             this.panelSeller.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SellerInventoryOwner)).EndInit();
             this.panelSellerInventoryItems.ResumeLayout(false);
             this.panelVillage.ResumeLayout(false);
             this.panelVillage.PerformLayout();
@@ -2027,13 +2032,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExperienceGain)).EndInit();
             this.panelRoomLoot.ResumeLayout(false);
             this.panelRoomLoot.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEnemyInventoryOwner)).EndInit();
             this.panelEnemyInventoryItems.ResumeLayout(false);
             this.panelRoomLootMoney.ResumeLayout(false);
             this.panelRoomLootMoney.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRoomLootMoney)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2162,9 +2165,9 @@
         private System.Windows.Forms.Label labelSellerItemsFor;
         private System.Windows.Forms.Label labelSellerInfo;
         private System.Windows.Forms.PictureBox pictureBoxItemOwner;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBoxCharacterInventoryOwner;
+        private System.Windows.Forms.PictureBox SellerInventoryOwner;
+        private System.Windows.Forms.PictureBox pictureBoxEnemyInventoryOwner;
     }
 }
 
