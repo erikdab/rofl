@@ -297,7 +297,7 @@ namespace ROFL
 	        var entityInventoryPanel = (Panel)(Controls.Find($"panel{entity.ToString()}InventoryItems", true)[0]);
 	        if (!entityInventoryPanel.Visible) return;
 
-	        if (_inventoryPage[entity] > MaxInventoryPages(entity))
+	        if (_inventoryPage[entity] >= MaxInventoryPages(entity))
 	        {
 	            _inventoryPage[entity]--;
 	        }
