@@ -747,7 +747,6 @@ namespace ROFL
         /// <param name="e"></param>
         private void buttonLocation3_Click(object sender, EventArgs e)
         {
-
             switch (_game.GameLocation)
             {
                 case GameLocation.Village:
@@ -776,6 +775,18 @@ namespace ROFL
             switch (_game.GameLocation)
             {
                 case GameLocation.Village:
+                    if (_game.Character.Health == _game.Character.MaxHealth)
+                    {
+                        MessageBox.Show(
+                            "You are already rested and at full strength!",
+                            "Already Rested");
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "You have rested and are now at full strength!",
+                            "Rested");
+                    }
                     _game.Character.Health = _game.Character.MaxHealth;
                     UpdatePlayerPanel();
                     break;
