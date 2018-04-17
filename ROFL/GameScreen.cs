@@ -23,6 +23,21 @@ namespace ROFL
         private Item _selectedItem;
 
         /// <summary>
+        /// Previous selected item Owner.
+        /// </summary>
+        private GameEntity _previousSelectedItemOwner;
+
+        /// <summary>
+        /// Previous Inventory Holder opened.
+        /// </summary>
+        private GameEntity _previousTransferOwner;
+
+        /// <summary>
+        /// Previous selected item.
+        /// </summary>
+        private Item _previousSelectedItem;
+
+        /// <summary>
         /// Current Store Page.
         /// </summary>
         private int _storePage = 0;
@@ -46,9 +61,17 @@ namespace ROFL
 
             _game = game;
 
-            UpdateControls();
-
             GoFullscreen(true);
+        }
+
+        /// <summary>
+        /// On Form Show, update all controls.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GameScreen_Shown(object sender, EventArgs e)
+        {
+            UpdateControls();
         }
 
         /// <summary>
@@ -145,6 +168,7 @@ namespace ROFL
         /// </summary>
         private void UpdatePlayerPanel()
         {
+            // If received experience for more than 1 level, upgrade multiple times.
             while (_game.Character.LevelUpRemainingCost == 0)
             {
                 _game.Character.LevelUpTry();
@@ -161,7 +185,8 @@ namespace ROFL
 
             progressBarCharacterExperience.Maximum = _game.Character.LevelUpCost;
             progressBarCharacterExperience.Value = _game.Character.Experience;
-            toolTipInfo.SetToolTip(progressBarCharacterExperience, $"You still need {_game.Character.LevelUpRemainingCost} Experience to Level Up.");
+            toolTipInfo.SetToolTip(progressBarCharacterExperience, 
+                $"You still need {_game.Character.LevelUpRemainingCost} Experience to Level Up.");
         }
         
         /// <summary>
@@ -224,14 +249,11 @@ namespace ROFL
             var item = entity.Items[itemIndex];
             inventoryButton.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"Item_{item.UniqueNameId}");
             toolTipInfo.SetToolTip(inventoryButton, $"{item.Name}{Environment.NewLine}{Environment.NewLine}{item.Description}");
-            
-            if (_selectedItem != null)
+
+            if (item == _selectedItem)
             {
-                if (item == _selectedItem)
-                {
-                    inventoryButton.FlatAppearance.BorderColor = Color.Black;
-                    inventoryButton.FlatAppearance.BorderSize = 5;
-                }
+                inventoryButton.FlatAppearance.BorderColor = Color.Black;
+                inventoryButton.FlatAppearance.BorderSize = 5;
             }
         }
 
@@ -247,9 +269,12 @@ namespace ROFL
 
         /// <summary>
         /// Update Inventory Panel.
+        /// Combine these into one function, which handles pagination too.
         /// </summary>
         private void UpdateCharacterInventoryPanel()
         {
+            if (!panelCharacterInventory.Visible) return;
+
             for (var index = 0; index < _game.Character.InventorySize; index++)
             {
                 UpdateInventoryItem(_game.Character, "Character", index, index);
@@ -292,62 +317,82 @@ namespace ROFL
         /// </summary>
         private void UpdateItemPanel()
         {
-            var playerOwned = _game.Character.OwnsItem(_selectedItem);
-            var sellerOwned = _game.Seller.OwnsItem(_selectedItem);
-            labelItemPanelTitle.Text = playerOwned ? "Player Item" : sellerOwned ? "Seller Item" : $"{_game.Enemy.Name} Item";
+            if (_selectedItem == null)
+            {
+                panelItem.Visible = false;
+                return;
+            }
 
-            panelItem.Visible = panelCharacterInventory.Visible && _selectedItem != null;
+            var owner = _game.GetItemOwnerEnum(_selectedItem);
 
-            if (_selectedItem == null) return;
+            // Item Panel is only visible if its owner inventory items panel stays visible.
+            panelItem.Visible = ((Panel)Controls.Find($"panel{owner.ToString()}InventoryItems", true)[0]).Visible;
+            if (! panelItem.Visible) return;
 
+            var transferOwner = panelSellerInventoryItems.Visible ? GameEntity.Seller :
+                panelEnemyInventoryItems.Visible ? GameEntity.Enemy : GameEntity.None;
+
+            // Draw rest if owner, item or transfer owner changed
+            if (_previousSelectedItem == _selectedItem && 
+                _previousSelectedItemOwner == owner &&
+                _previousTransferOwner == transferOwner) return;
+            _previousTransferOwner = transferOwner;
+
+            // Item Transfer
+            var transferDirection = owner == GameEntity.Character ? "Give" : "Take";
+            var tradePriceMessage = "";
+
+            // Item ISellable
+            var sellableItem = (_selectedItem as ITradeable);
+            panelItemCost.Visible = sellableItem != null;
+            buttonItemTrade.Visible = panelSellerInventoryItems.Visible || panelEnemyInventoryItems.Visible;
+            if (sellableItem != null)
+            {
+                var tradeDirection = owner == GameEntity.Seller ? "Buy" : "Sell";
+                var tradePrice = owner == GameEntity.Seller ? sellableItem.BuyPrice : sellableItem.SellPrice;
+
+                // Item Cost Panel
+                toolTipInfo.SetToolTip(labelItemCost, $"{tradeDirection}ing Price");
+                labelItemCost.Text = $"{tradePrice:C}";
+
+                if (panelSellerInventoryItems.Visible)
+                {
+                    transferDirection = tradeDirection;
+                    tradePriceMessage = $"for {tradePrice:C}";
+                }
+            }
+            // Transfer (Give / Take) or Trade (Buy / Sell) Action:
+            buttonItemTrade.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"Action_{transferDirection}");
+            toolTipInfo.SetToolTip(buttonItemTrade, $"You can ${transferDirection} this {_selectedItem.Name}{tradePriceMessage}.");
+
+            // Draw rest if owner or item changed
+            if (_previousSelectedItem == _selectedItem &&
+                _previousSelectedItemOwner == owner) return;
+            _previousSelectedItemOwner = owner;
+
+            // Owner Image
+            pictureBoxItemOwner.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"Inventory_{owner.ToString()}");
+            toolTipInfo.SetToolTip(pictureBoxItemOwner, $"Located in {owner.ToString()} Inventory.");
+
+            // Item Trashing
+            buttonTrash.Visible = _selectedItem.CanTrash(_game.Character);
+
+            // Draw rest if item changed
+            if (_previousSelectedItem == _selectedItem) return;
+            _previousSelectedItem = _selectedItem;
+
+            // Item Info
             labelItemName.Text = _selectedItem.Name;
             labelItemInfo.Text = "Info: " + _selectedItem.Description;
             buttonItem.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"Item_{_selectedItem.UniqueNameId}");
-            
+
+            // Item IUsable
             var usableItem = (_selectedItem as IUsable);
             if (usableItem != null)
             {
                 toolTipInfo.SetToolTip(buttonItemUse, usableItem.UseDescription());
             }
             buttonItemUse.Visible = usableItem != null;
-
-            var sellableItem = (_selectedItem as ITradeable);
-            panelItemCost.Visible = sellableItem != null;
-            buttonItemTrade.Visible = sellableItem != null;
-            if (sellableItem != null)
-            {
-                if (!sellerOwned)
-                {
-                    toolTipInfo.SetToolTip(labelItemCost, "Selling Price");
-                    labelItemCost.Text = $"{sellableItem.SellCost:C}";
-                }
-                if (playerOwned)
-                {
-                    if (panelSeller.Visible)
-                    {
-                        buttonItemTrade.BackgroundImage = Properties.Resources.Action_Sell;
-                        toolTipInfo.SetToolTip(buttonItemTrade, $"Selling this {_selectedItem.Name} will cash in {sellableItem.SellCost:C}.");
-                    }
-                    else
-                    {
-                        buttonItemTrade.Visible = false;
-                    }
-                }
-                else if(sellerOwned)
-                {
-                    toolTipInfo.SetToolTip(labelItemCost, "Buying Price");
-                    labelItemCost.Text = $"{sellableItem.BuyCost:C}";
-                    buttonItemTrade.BackgroundImage = Properties.Resources.Action_Buy;
-                    toolTipInfo.SetToolTip(buttonItemTrade, $"Buying this {_selectedItem.Name} will cost {sellableItem.BuyCost:C}.");
-                }
-                else
-                {
-                    buttonItemTrade.BackgroundImage = Properties.Resources.Action_Take;
-                    toolTipInfo.SetToolTip(buttonItemTrade, $"You may take this {_selectedItem.Name} for free!");
-                }
-            }
-
-            buttonTrash.Visible = _selectedItem.CanTrash(_game.Character);
         }
 
         /// <summary>
@@ -479,29 +524,25 @@ namespace ROFL
         /// <param name="e"></param>
         private void buttonInventoryItem_Click(object sender, EventArgs e)
         {
-            // Get Inventory Number of current button.
-            var buttonSender = (Button) sender;
-            var buttonNameNumeric = new string(buttonSender.Name.Where(char.IsDigit).ToArray());
-            var inventoryNumber = int.Parse(buttonNameNumeric);
+            // Get Inventory Slot Number.
+            var senderName = ((Button) sender).Name;
+            var inventorySlot = int.Parse(new string(senderName.Where(char.IsDigit).ToArray()));
             IEntity entity;
-            if (buttonSender.Name.Contains("Enemy"))
+            if (senderName.Contains("Enemy"))
             {
                 entity = _game.Enemy;
             }
-            else if (buttonSender.Name.Contains("Character"))
+            else if (senderName.Contains("Character"))
             {
                 entity = _game.Character;
             }
             else
             {
                 entity = _game.Seller;
-                inventoryNumber += _storeItemsPerPage * _storePage;
+                inventorySlot += _storeItemsPerPage * _storePage;
             }
-
-            var newSelection = entity.Items[inventoryNumber];
-
-            // Select only if it is a new item, otherwise unselect.
-            _selectedItem = _selectedItem != newSelection ? entity.Items[inventoryNumber] : null;
+            
+            _selectedItem = entity.Items[inventorySlot];
 
             UpdateInventoryPanels();
             UpdateItemPanel();
@@ -590,10 +631,10 @@ namespace ROFL
         {
             if (_selectedItem == null) return;
 
-            if (_selectedItem is ITradeable tradeableItem && tradeableItem.SellCost > 0)
+            if (_selectedItem is ITradeable tradeableItem && tradeableItem.SellPrice > 0)
             {
                 if (MessageBox.Show(
-                        $"Are you sure you want to trash {_selectedItem.Name}? It can be sold for {tradeableItem.SellCost} in the store!",
+                        $"Are you sure you want to trash {_selectedItem.Name}? It can be sold for {tradeableItem.SellPrice} in the store!",
                         "Are you sure?",
                         MessageBoxButtons.YesNo) == DialogResult.No) return;
             }
@@ -767,6 +808,7 @@ namespace ROFL
         private void buttonRoomClose_Click(object sender, EventArgs e)
         {
             panelRoom.Visible = false;
+            UpdateItemPanel();
         }
     }
 }

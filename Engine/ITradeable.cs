@@ -14,12 +14,12 @@ namespace Engine
         /// <summary>
         /// Cost at which Item may be sold.
         /// </summary>
-        int SellCost { get; }
+        int SellPrice { get; }
 
         /// <summary>
         /// Cost at which Item may be bought.
         /// </summary>
-        int BuyCost { get; }
+        int BuyPrice { get; }
 
         /// <summary>
         /// Try to sell Item.

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +23,14 @@ namespace Engine
     public enum RoomType
     {
         Loot, Dragon, Trap, Empty
+    }
+
+    /// <summary>
+    /// Possible Game GameEntity
+    /// </summary>
+    public enum GameEntity
+    {
+        Character, Seller, Enemy, None
     }
 
     /// <summary>
@@ -134,6 +143,56 @@ namespace Engine
             // Character starting items:
             Character.Items.AddRange(LootGenerator.GenerateInRange(3, 5, true));
             StockSellerInventory();
+        }
+
+        /// <summary>
+        /// Get the item owner.
+        /// </summary>
+        /// <param name="item">Item to search owner of</param>
+        /// <returns>Owner</returns>
+        public IEntity GetItemOwner(Item item)
+        {
+            if (Character.OwnsItem(item))
+            {
+                return Character;
+            }
+
+            if (Seller.OwnsItem(item))
+            {
+                return Seller;
+            }
+
+            if (Enemy.OwnsItem(item))
+            {
+                return Enemy;
+            }
+
+            throw new Exception($"No one owns this item: {item.Name}!");
+        }
+
+        /// <summary>
+        /// Get the item owner's name.
+        /// </summary>
+        /// <param name="item">Item to search owner of</param>
+        /// <returns>Owner Name</returns>
+        public GameEntity GetItemOwnerEnum(Item item)
+        {
+            if (Character.OwnsItem(item))
+            {
+                return GameEntity.Character;
+            }
+
+            if (Seller.OwnsItem(item))
+            {
+                return GameEntity.Seller;
+            }
+
+            if (Enemy.OwnsItem(item))
+            {
+                return GameEntity.Enemy;
+            }
+
+            throw new Exception($"No one owns this item: {item.Name}!");
         }
 
         /// <summary>

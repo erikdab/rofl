@@ -135,6 +135,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.txt" />
+    <None Include="Resources\Action_Give.png" />
+    <None Include="Resources\Inventory_Seller.png" />
+    <None Include="Resources\Inventory_Enemy.png" />
+    <None Include="Resources\Inventory_Character.png" />
     <None Include="Resources\Item_Gold_Medal.png" />
     <None Include="Resources\Item_Golden_Mirror.png" />
     <None Include="Resources\Item_Polished_Diamond.png" />

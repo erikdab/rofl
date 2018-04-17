@@ -15,12 +15,12 @@ namespace Engine
         /// <summary>
         /// Cost at which Item may be sold.
         /// </summary>
-        public int SellCost { get; protected set; }
+        public int SellPrice { get; protected set; }
 
         /// <summary>
         /// Cost at which Item may be bought.
         /// </summary>
-        public int BuyCost { get; protected set; }
+        public int BuyPrice { get; protected set; }
         /// <summary>
         /// Possible Trophy Types Count.
         /// </summary>
@@ -38,32 +38,32 @@ namespace Engine
                 case 0:
                     Name = "Treasure Map";
                     Description = "A carefully etched, precise treasure map";
-                    SellCost = 70;
+                    SellPrice = 70;
                     break;
                 case 1:
                     Name = "Ruby Necklace";
                     Description = "An abandoned, beautiful ruby necklace";
-                    SellCost = 90;
+                    SellPrice = 90;
                     break;
                 case 2:
                     Name = "Gold Medal";
                     Description = "A dusty, but true gold medal";
-                    SellCost = 110;
+                    SellPrice = 110;
                     break;
                 case 3:
                     Name = "Golden Mirror";
                     Description = "An dusty, but elaborate golden mirror";
-                    SellCost = 130;
+                    SellPrice = 130;
                     break;
                 default:
                     Name = "Polished Diamond";
                     Description = "A big, polished diamond";
-                    SellCost = 150;
+                    SellPrice = 150;
                     break;
             }
 
-            SellCost += _random.Next(20);
-            BuyCost = SellCost + 50;
+            SellPrice += _random.Next(20);
+            BuyPrice = SellPrice + 50;
 
             Description += ". It must be worth a lot!";
         }
@@ -73,7 +73,7 @@ namespace Engine
         /// </summary>
         public void SellTry(IEntity entity, IEntity toOtherEntity)
         {
-            entity.Money += SellCost;
+            entity.Money += SellPrice;
             entity.Items.Remove(this);
         }
 
@@ -86,9 +86,9 @@ namespace Engine
             {
                 throw new Exception($"{entity.Name} cannot buy {Name}, they have no room in their inventory.");
             }
-            if (entity.Money >= BuyCost)
+            if (entity.Money >= BuyPrice)
             {
-                entity.Money -= BuyCost;
+                entity.Money -= BuyPrice;
 
                 entity.Items.Add(this);
                 fromOtherEntity.Items.Remove(this);

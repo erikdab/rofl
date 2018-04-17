@@ -73,6 +73,16 @@ namespace ROFL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Action_Give {
+            get {
+                object obj = ResourceManager.GetObject("Action_Give", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Action_Move {
             get {
                 object obj = ResourceManager.GetObject("Action_Move", resourceCulture);
@@ -236,6 +246,36 @@ namespace ROFL.Properties {
         internal static System.Drawing.Bitmap information {
             get {
                 object obj = ResourceManager.GetObject("information", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Inventory_Character {
+            get {
+                object obj = ResourceManager.GetObject("Inventory_Character", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Inventory_Enemy {
+            get {
+                object obj = ResourceManager.GetObject("Inventory_Enemy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Inventory_Seller {
+            get {
+                object obj = ResourceManager.GetObject("Inventory_Seller", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -456,16 +496,6 @@ namespace ROFL.Properties {
         internal static System.Drawing.Bitmap Rest {
             get {
                 object obj = ResourceManager.GetObject("Rest", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Rest1 {
-            get {
-                object obj = ResourceManager.GetObject("Rest1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

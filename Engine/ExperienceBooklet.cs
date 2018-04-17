@@ -15,12 +15,12 @@ namespace Engine
         /// <summary>
         /// Cost at which Item may be sold.
         /// </summary>
-        public int SellCost { get; protected set; } = 40;
+        public int SellPrice { get; protected set; } = 40;
 
         /// <summary>
         /// Cost at which Item may be bought.
         /// </summary>
-        public int BuyCost { get; protected set; } = 60;
+        public int BuyPrice { get; protected set; } = 60;
 
         /// <summary>
         /// Default constructor.
@@ -84,7 +84,7 @@ namespace Engine
         /// </summary>
         public void SellTry(IEntity entity, IEntity toOtherEntity)
         {
-            entity.Money += SellCost;
+            entity.Money += SellPrice;
             entity.Items.Remove(this);
         }
 
@@ -97,9 +97,9 @@ namespace Engine
             {
                 throw new Exception($"{entity.Name} cannot buy {Name}, they have no room in their inventory.");
             }
-            if (entity.Money >= BuyCost)
+            if (entity.Money >= BuyPrice)
             {
-                entity.Money -= BuyCost;
+                entity.Money -= BuyPrice;
 
                 entity.Items.Add(this);
                 fromOtherEntity.Items.Remove(this);
