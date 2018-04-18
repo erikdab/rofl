@@ -372,8 +372,8 @@ namespace ROFL
 		    var receiver = result.Item2;
 
 			// Item Panel is only visible if its owner inventory items panel stays visible.
-			panelItem.Visible = ((Panel)Controls.Find($"panel{giver.Type}InventoryItems", true)[0]).Visible;
-			if (!panelItem.Visible) return;
+			panelItem.Visible = giver != null && ((Panel)Controls.Find($"panel{giver.Type}InventoryItems", true)[0]).Visible;
+			if (giver == null || ! panelItem.Visible) return;
             
 			// Draw rest if owner, item or transfer owner changed
 			if (_previousSelectedItem == _selectedItem &&
@@ -628,6 +628,19 @@ namespace ROFL
             return new Tuple<IEntity, IEntity>(giver, receiver);
         }
 
+        /// <summary>
+        /// Get next item to select.
+        /// </summary>
+        /// <returns></returns>
+	    private Item GetNextItem()
+        {
+            var entity = _game.GetEntity(_game.GetItemOwnerEnum(_selectedItem));
+            if (entity.Items.Count == 1) return null;
+
+            var itemIndex = entity.Items.FindIndex(a => a == _selectedItem);
+            return itemIndex < entity.Items.Count - 1 ? entity.Items[itemIndex + 1] : entity.Items[itemIndex - 1];
+        }
+
 		/// <summary>
 		/// Try to perform an Action and print exception message if failed.
 		/// </summary>
@@ -635,13 +648,16 @@ namespace ROFL
 		/// <param name="item">Item, which action's we are performing</param>
 		/// <param name="verbName">Action in verb form</param>
 		/// <param name="nounName">Action in noun form</param>
-		/// <param name="removeSelected"></param>
-		private void DoItemActionTry(Action action, Item item, string verbName, string nounName, bool removeSelected = true)
+		/// <param name="selectNext"></param>
+		private void DoItemActionTry(Action action, Item item, string verbName, string nounName, Item selectNext = null)
 		{
 			try
 			{
 				action.Invoke();
-				if (removeSelected) _selectedItem = null;
+			    if (selectNext != null)
+			    {
+			        _selectedItem = selectNext;
+                }
 				UpdateControls();
 			}
 			catch (Exception ex)
@@ -662,7 +678,8 @@ namespace ROFL
 				DoItemActionTry(() => usableItem.UseTry(_game.Character),
 					_selectedItem,
 					usableItem.UseVerbName().ToLower(),
-					usableItem.UseNounName());
+					usableItem.UseNounName(),
+				    GetNextItem());
 			}
 		}
 
@@ -683,7 +700,7 @@ namespace ROFL
 		        _selectedItem,
 		        "trade",
 		        "Trading",
-		        false);
+                GetNextItem());
 		}
 
 		/// <summary>
@@ -705,7 +722,8 @@ namespace ROFL
 			DoItemActionTry(() => _selectedItem.TrashTry(_game.Character),
 				_selectedItem,
 				"trash",
-				"Trashing");
+				"Trashing",
+			    GetNextItem());
 		}
 
 		/// <summary>

@@ -153,7 +153,7 @@ namespace Engine
                 case EntityType.Enemy:
                     return Enemy;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(entityType), entityType, null);
+                    return null;
             }
         }
 
@@ -179,7 +179,7 @@ namespace Engine
                 return EntityType.Enemy;
             }
 
-            throw new Exception($"No one owns this item: {item.Name}!");
+            return EntityType.None;
         }
 
         /// <summary>
