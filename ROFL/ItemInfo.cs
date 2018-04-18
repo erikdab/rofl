@@ -167,7 +167,7 @@ namespace ROFL
         /// </summary>
         public void SetNextItem()
         {
-            if (SelectedItem == null || Giver.Items.Count == 1)
+            if (SelectedItem == null || Giver == null || Giver.Items.Count == 1)
             {
                 NextItem = null;
                 return;

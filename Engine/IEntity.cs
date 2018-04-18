@@ -55,6 +55,11 @@ namespace Engine
         List<Item> Items { get; set; }
 
         /// <summary>
+        /// Sort Items.
+        /// </summary>
+        void SortItems();
+
+        /// <summary>
         /// Check if Entity owns item.
         /// </summary>
         bool OwnsItem(Item item);

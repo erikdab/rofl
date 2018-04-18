@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -149,6 +150,15 @@ namespace ROFL
             }
 
             SetPageVisibility();
+
+            if (Entity.Type == EntityType.Character)
+            {
+                labelSlots.Text = $"{Entity.Items.Count}/{Entity.InventorySize}";
+            }
+            else
+            {
+                labelSlots.Text = $"{Entity.Items.Count}";
+            }
         }
         
         /// <summary>
@@ -244,6 +254,17 @@ namespace ROFL
             {
                 UpdateSelectedItem(null);
             }
+        }
+
+        /// <summary>
+        /// Sort Items.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            Entity.SortItems();
+            UpdateAllItems();
         }
     }
 }

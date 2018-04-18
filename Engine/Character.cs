@@ -133,6 +133,14 @@ namespace Engine
         }
 
         /// <summary>
+        /// Sort Items.
+        /// </summary>
+        public void SortItems()
+        {
+            Items = Items.OrderBy(o => o.Name).ToList();
+        }
+
+        /// <summary>
         /// Does Entity Own Item.
         /// </summary>
         /// <param name="item">Item to check</param>

@@ -235,7 +235,7 @@ namespace Engine
             {
                 case RoomType.Loot:
                     Enemy.Money = Random.Next(30, 60);
-                    var lootItems = LootGenerator.Generate(Random.Next(Enemy.InventorySize));
+                    var lootItems = LootGenerator.Generate(Random.Next(2, Enemy.InventorySize));
                     Enemy.Items = lootItems.ToList();
                     RoomDescription = "Loot! Lucky :). Take anything you want, as long as you have space for it or need of it!";
                     ExperienceGained = Random.Next(15, 30) * DungeonLevel;

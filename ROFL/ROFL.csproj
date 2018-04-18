@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.txt" />
+    <None Include="Resources\scrollVertical.png" />
     <None Include="Resources\Action_Give.png" />
     <None Include="Resources\Inventory_Seller.png" />
     <None Include="Resources\Inventory_Enemy.png" />
@@ -183,7 +184,6 @@
     <None Include="Resources\NewRoom.png" />
     <None Include="Resources\Village.png" />
     <None Include="Resources\TellTales.png" />
-    <None Include="Resources\Rest1.png" />
     <None Include="Resources\Rest.png" />
     <None Include="Resources\Dungeon.png" />
     <None Include="Resources\Shop.png" />
