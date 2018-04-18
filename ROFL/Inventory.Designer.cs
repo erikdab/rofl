@@ -113,6 +113,7 @@
             this.Controls.Add(this.panelPage);
             this.Name = "Inventory";
             this.Size = new System.Drawing.Size(256, 104);
+            this.VisibleChanged += new System.EventHandler(this.Inventory_VisibleChanged);
             this.panelPage.ResumeLayout(false);
             this.ResumeLayout(false);
 

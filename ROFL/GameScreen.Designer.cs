@@ -39,10 +39,6 @@
             this.progressBarCharacterHealth = new System.Windows.Forms.ProgressBar();
             this.buttonPlayPause = new System.Windows.Forms.Button();
             this.buttonMaximizeMinimize = new System.Windows.Forms.Button();
-            this.buttonItemUse = new System.Windows.Forms.Button();
-            this.labelItemCost = new System.Windows.Forms.Label();
-            this.buttonItemTrade = new System.Windows.Forms.Button();
-            this.buttonTrash = new System.Windows.Forms.Button();
             this.buttonSellerClose = new System.Windows.Forms.Button();
             this.buttonLocation1 = new System.Windows.Forms.Button();
             this.buttonLocation3 = new System.Windows.Forms.Button();
@@ -69,19 +65,11 @@
             this.labelGameTime = new System.Windows.Forms.Label();
             this.labelGameTimeFor = new System.Windows.Forms.Label();
             this.panelCharacterInventory = new System.Windows.Forms.Panel();
+            this.inventoryCharacter = new ROFL.Inventory();
             this.pictureBoxCharacterInventoryOwner = new System.Windows.Forms.PictureBox();
             this.labelCharacterInventoryTitle = new System.Windows.Forms.Label();
-            this.panelItem = new System.Windows.Forms.Panel();
-            this.pictureBoxItemOwner = new System.Windows.Forms.PictureBox();
-            this.panelItemImage = new System.Windows.Forms.Panel();
-            this.buttonItem = new System.Windows.Forms.Button();
-            this.labelItemPanelTitle = new System.Windows.Forms.Label();
-            this.labelItemInfo = new System.Windows.Forms.Label();
-            this.panelItemActions = new System.Windows.Forms.Panel();
-            this.panelItemCost = new System.Windows.Forms.Panel();
-            this.pictureBoxItemCost = new System.Windows.Forms.PictureBox();
-            this.labelItemName = new System.Windows.Forms.Label();
             this.panelSeller = new System.Windows.Forms.Panel();
+            this.inventorySeller = new ROFL.Inventory();
             this.SellerInventoryOwner = new System.Windows.Forms.PictureBox();
             this.labelSellerItemsFor = new System.Windows.Forms.Label();
             this.labelSellerInfo = new System.Windows.Forms.Label();
@@ -101,6 +89,7 @@
             this.pictureBoxExperienceGain = new System.Windows.Forms.PictureBox();
             this.labelRoomEvent = new System.Windows.Forms.Label();
             this.panelRoomLoot = new System.Windows.Forms.Panel();
+            this.inventoryEnemy = new ROFL.Inventory();
             this.pictureBoxEnemyInventoryOwner = new System.Windows.Forms.PictureBox();
             this.labelRoomLootItems = new System.Windows.Forms.Label();
             this.labelRoomLootMoneyFor = new System.Windows.Forms.Label();
@@ -109,9 +98,7 @@
             this.pictureBoxRoomLootMoney = new System.Windows.Forms.PictureBox();
             this.labelRoomEventFor = new System.Windows.Forms.Label();
             this.labelRoom = new System.Windows.Forms.Label();
-            this.inventoryCharacter = new ROFL.Inventory();
-            this.inventorySeller = new ROFL.Inventory();
-            this.inventoryEnemy = new ROFL.Inventory();
+            this.itemInfo = new ROFL.ItemInfo();
             this.panelCharacter.SuspendLayout();
             this.panelCharacterExperience.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterExperience)).BeginInit();
@@ -119,12 +106,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterMoney)).BeginInit();
             this.panelCharacterInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterInventoryOwner)).BeginInit();
-            this.panelItem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemOwner)).BeginInit();
-            this.panelItemImage.SuspendLayout();
-            this.panelItemActions.SuspendLayout();
-            this.panelItemCost.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemCost)).BeginInit();
             this.panelSeller.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SellerInventoryOwner)).BeginInit();
             this.panelVillage.SuspendLayout();
@@ -261,69 +242,6 @@
             this.toolTipInfo.SetToolTip(this.buttonMaximizeMinimize, "Toggle Fullscreen");
             this.buttonMaximizeMinimize.UseVisualStyleBackColor = false;
             this.buttonMaximizeMinimize.Click += new System.EventHandler(this.buttonMaximizeMinimize_Click);
-            // 
-            // buttonItemUse
-            // 
-            this.buttonItemUse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonItemUse.BackColor = System.Drawing.Color.Transparent;
-            this.buttonItemUse.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonItemUse.BackgroundImage")));
-            this.buttonItemUse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonItemUse.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.buttonItemUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonItemUse.Location = new System.Drawing.Point(-1, -1);
-            this.buttonItemUse.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonItemUse.Name = "buttonItemUse";
-            this.buttonItemUse.Size = new System.Drawing.Size(40, 40);
-            this.buttonItemUse.TabIndex = 107;
-            this.toolTipInfo.SetToolTip(this.buttonItemUse, "Use Item");
-            this.buttonItemUse.UseVisualStyleBackColor = false;
-            this.buttonItemUse.Click += new System.EventHandler(this.buttonItemUse_Click);
-            // 
-            // labelItemCost
-            // 
-            this.labelItemCost.AutoSize = true;
-            this.labelItemCost.BackColor = System.Drawing.Color.Transparent;
-            this.labelItemCost.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelItemCost.Location = new System.Drawing.Point(32, 1);
-            this.labelItemCost.Name = "labelItemCost";
-            this.labelItemCost.Size = new System.Drawing.Size(89, 28);
-            this.labelItemCost.TabIndex = 104;
-            this.labelItemCost.Text = "Sell Value";
-            this.toolTipInfo.SetToolTip(this.labelItemCost, "Sell Value");
-            // 
-            // buttonItemTrade
-            // 
-            this.buttonItemTrade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonItemTrade.BackColor = System.Drawing.Color.Transparent;
-            this.buttonItemTrade.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonItemTrade.BackgroundImage")));
-            this.buttonItemTrade.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonItemTrade.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.buttonItemTrade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonItemTrade.Location = new System.Drawing.Point(38, -1);
-            this.buttonItemTrade.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonItemTrade.Name = "buttonItemTrade";
-            this.buttonItemTrade.Size = new System.Drawing.Size(40, 40);
-            this.buttonItemTrade.TabIndex = 108;
-            this.toolTipInfo.SetToolTip(this.buttonItemTrade, "Sell Item");
-            this.buttonItemTrade.UseVisualStyleBackColor = false;
-            this.buttonItemTrade.Click += new System.EventHandler(this.buttonItemTrade_Click);
-            // 
-            // buttonTrash
-            // 
-            this.buttonTrash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonTrash.BackColor = System.Drawing.Color.Transparent;
-            this.buttonTrash.BackgroundImage = global::ROFL.Properties.Resources.Action_Trash;
-            this.buttonTrash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonTrash.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.buttonTrash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTrash.Location = new System.Drawing.Point(77, -1);
-            this.buttonTrash.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonTrash.Name = "buttonTrash";
-            this.buttonTrash.Size = new System.Drawing.Size(40, 40);
-            this.buttonTrash.TabIndex = 109;
-            this.toolTipInfo.SetToolTip(this.buttonTrash, "Trash Item");
-            this.buttonTrash.UseVisualStyleBackColor = false;
-            this.buttonTrash.Click += new System.EventHandler(this.buttonTrash_Click);
             // 
             // buttonSellerClose
             // 
@@ -669,6 +587,16 @@
             this.panelCharacterInventory.Size = new System.Drawing.Size(311, 307);
             this.panelCharacterInventory.TabIndex = 85;
             // 
+            // inventoryCharacter
+            // 
+            this.inventoryCharacter.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("inventoryCharacter.BackgroundImage")));
+            this.inventoryCharacter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inventoryCharacter.Location = new System.Drawing.Point(28, 47);
+            this.inventoryCharacter.Name = "inventoryCharacter";
+            this.inventoryCharacter.SelectedItem = null;
+            this.inventoryCharacter.Size = new System.Drawing.Size(258, 234);
+            this.inventoryCharacter.TabIndex = 153;
+            // 
             // pictureBoxCharacterInventoryOwner
             // 
             this.pictureBoxCharacterInventoryOwner.BackColor = System.Drawing.Color.Transparent;
@@ -693,137 +621,6 @@
             this.labelCharacterInventoryTitle.TabIndex = 78;
             this.labelCharacterInventoryTitle.Text = "Backpack";
             // 
-            // panelItem
-            // 
-            this.panelItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelItem.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelItem.Controls.Add(this.pictureBoxItemOwner);
-            this.panelItem.Controls.Add(this.panelItemImage);
-            this.panelItem.Controls.Add(this.labelItemPanelTitle);
-            this.panelItem.Controls.Add(this.labelItemInfo);
-            this.panelItem.Controls.Add(this.panelItemActions);
-            this.panelItem.Controls.Add(this.panelItemCost);
-            this.panelItem.Controls.Add(this.labelItemName);
-            this.panelItem.Location = new System.Drawing.Point(655, 389);
-            this.panelItem.Name = "panelItem";
-            this.panelItem.Size = new System.Drawing.Size(311, 290);
-            this.panelItem.TabIndex = 94;
-            this.panelItem.Visible = false;
-            // 
-            // pictureBoxItemOwner
-            // 
-            this.pictureBoxItemOwner.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxItemOwner.BackgroundImage = global::ROFL.Properties.Resources.Inventory_Character;
-            this.pictureBoxItemOwner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxItemOwner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxItemOwner.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBoxItemOwner.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxItemOwner.Name = "pictureBoxItemOwner";
-            this.pictureBoxItemOwner.Size = new System.Drawing.Size(40, 40);
-            this.pictureBoxItemOwner.TabIndex = 105;
-            this.pictureBoxItemOwner.TabStop = false;
-            // 
-            // panelItemImage
-            // 
-            this.panelItemImage.BackgroundImage = global::ROFL.Properties.Resources.Item_Blank;
-            this.panelItemImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelItemImage.Controls.Add(this.buttonItem);
-            this.panelItemImage.Enabled = false;
-            this.panelItemImage.Location = new System.Drawing.Point(16, 44);
-            this.panelItemImage.Name = "panelItemImage";
-            this.panelItemImage.Size = new System.Drawing.Size(66, 66);
-            this.panelItemImage.TabIndex = 151;
-            // 
-            // buttonItem
-            // 
-            this.buttonItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonItem.BackColor = System.Drawing.Color.Transparent;
-            this.buttonItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonItem.FlatAppearance.BorderSize = 0;
-            this.buttonItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonItem.Location = new System.Drawing.Point(0, 0);
-            this.buttonItem.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonItem.Name = "buttonItem";
-            this.buttonItem.Size = new System.Drawing.Size(64, 64);
-            this.buttonItem.TabIndex = 101;
-            this.buttonItem.UseVisualStyleBackColor = false;
-            // 
-            // labelItemPanelTitle
-            // 
-            this.labelItemPanelTitle.AutoSize = true;
-            this.labelItemPanelTitle.BackColor = System.Drawing.Color.Transparent;
-            this.labelItemPanelTitle.Font = new System.Drawing.Font("Segoe Print", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelItemPanelTitle.Location = new System.Drawing.Point(42, -1);
-            this.labelItemPanelTitle.Name = "labelItemPanelTitle";
-            this.labelItemPanelTitle.Size = new System.Drawing.Size(83, 47);
-            this.labelItemPanelTitle.TabIndex = 102;
-            this.labelItemPanelTitle.Text = "Item";
-            // 
-            // labelItemInfo
-            // 
-            this.labelItemInfo.BackColor = System.Drawing.Color.Transparent;
-            this.labelItemInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelItemInfo.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelItemInfo.Image = global::ROFL.Properties.Resources.background1_Game;
-            this.labelItemInfo.Location = new System.Drawing.Point(16, 156);
-            this.labelItemInfo.Name = "labelItemInfo";
-            this.labelItemInfo.Size = new System.Drawing.Size(277, 115);
-            this.labelItemInfo.TabIndex = 106;
-            this.labelItemInfo.Text = "Info Text";
-            // 
-            // panelItemActions
-            // 
-            this.panelItemActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelItemActions.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelItemActions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelItemActions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelItemActions.Controls.Add(this.buttonItemUse);
-            this.panelItemActions.Controls.Add(this.buttonTrash);
-            this.panelItemActions.Controls.Add(this.buttonItemTrade);
-            this.panelItemActions.Location = new System.Drawing.Point(16, 113);
-            this.panelItemActions.Name = "panelItemActions";
-            this.panelItemActions.Size = new System.Drawing.Size(277, 40);
-            this.panelItemActions.TabIndex = 105;
-            // 
-            // panelItemCost
-            // 
-            this.panelItemCost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelItemCost.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelItemCost.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelItemCost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelItemCost.Controls.Add(this.labelItemCost);
-            this.panelItemCost.Controls.Add(this.pictureBoxItemCost);
-            this.panelItemCost.Location = new System.Drawing.Point(85, 78);
-            this.panelItemCost.Name = "panelItemCost";
-            this.panelItemCost.Size = new System.Drawing.Size(208, 32);
-            this.panelItemCost.TabIndex = 104;
-            // 
-            // pictureBoxItemCost
-            // 
-            this.pictureBoxItemCost.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxItemCost.BackgroundImage = global::ROFL.Properties.Resources.Item_Money;
-            this.pictureBoxItemCost.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxItemCost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxItemCost.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBoxItemCost.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxItemCost.Name = "pictureBoxItemCost";
-            this.pictureBoxItemCost.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxItemCost.TabIndex = 103;
-            this.pictureBoxItemCost.TabStop = false;
-            // 
-            // labelItemName
-            // 
-            this.labelItemName.AutoSize = true;
-            this.labelItemName.BackColor = System.Drawing.Color.Transparent;
-            this.labelItemName.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelItemName.Location = new System.Drawing.Point(83, 46);
-            this.labelItemName.Name = "labelItemName";
-            this.labelItemName.Size = new System.Drawing.Size(101, 28);
-            this.labelItemName.TabIndex = 87;
-            this.labelItemName.Text = "Item Name";
-            // 
             // panelSeller
             // 
             this.panelSeller.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -841,6 +638,16 @@
             this.panelSeller.Size = new System.Drawing.Size(311, 603);
             this.panelSeller.TabIndex = 102;
             this.panelSeller.Visible = false;
+            // 
+            // inventorySeller
+            // 
+            this.inventorySeller.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("inventorySeller.BackgroundImage")));
+            this.inventorySeller.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inventorySeller.Location = new System.Drawing.Point(29, 285);
+            this.inventorySeller.Name = "inventorySeller";
+            this.inventorySeller.SelectedItem = null;
+            this.inventorySeller.Size = new System.Drawing.Size(258, 298);
+            this.inventorySeller.TabIndex = 154;
             // 
             // SellerInventoryOwner
             // 
@@ -1091,6 +898,16 @@
             this.panelRoomLoot.TabIndex = 107;
             this.panelRoomLoot.Visible = false;
             // 
+            // inventoryEnemy
+            // 
+            this.inventoryEnemy.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("inventoryEnemy.BackgroundImage")));
+            this.inventoryEnemy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inventoryEnemy.Location = new System.Drawing.Point(28, 147);
+            this.inventoryEnemy.Name = "inventoryEnemy";
+            this.inventoryEnemy.SelectedItem = null;
+            this.inventoryEnemy.Size = new System.Drawing.Size(258, 130);
+            this.inventoryEnemy.TabIndex = 154;
+            // 
             // pictureBoxEnemyInventoryOwner
             // 
             this.pictureBoxEnemyInventoryOwner.BackColor = System.Drawing.Color.Transparent;
@@ -1189,32 +1006,20 @@
             this.labelRoom.TabIndex = 78;
             this.labelRoom.Text = "Room";
             // 
-            // inventoryCharacter
+            // itemInfo
             // 
-            this.inventoryCharacter.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("inventoryCharacter.BackgroundImage")));
-            this.inventoryCharacter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inventoryCharacter.Location = new System.Drawing.Point(28, 47);
-            this.inventoryCharacter.Name = "inventoryCharacter";
-            this.inventoryCharacter.Size = new System.Drawing.Size(258, 234);
-            this.inventoryCharacter.TabIndex = 153;
-            // 
-            // inventorySeller
-            // 
-            this.inventorySeller.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("inventorySeller.BackgroundImage")));
-            this.inventorySeller.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inventorySeller.Location = new System.Drawing.Point(29, 285);
-            this.inventorySeller.Name = "inventorySeller";
-            this.inventorySeller.Size = new System.Drawing.Size(258, 298);
-            this.inventorySeller.TabIndex = 154;
-            // 
-            // inventoryEnemy
-            // 
-            this.inventoryEnemy.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("inventoryEnemy.BackgroundImage")));
-            this.inventoryEnemy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inventoryEnemy.Location = new System.Drawing.Point(28, 147);
-            this.inventoryEnemy.Name = "inventoryEnemy";
-            this.inventoryEnemy.Size = new System.Drawing.Size(258, 130);
-            this.inventoryEnemy.TabIndex = 154;
+            this.itemInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemInfo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("itemInfo.BackgroundImage")));
+            this.itemInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.itemInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.itemInfo.Giver = null;
+            this.itemInfo.Location = new System.Drawing.Point(655, 389);
+            this.itemInfo.Name = "itemInfo";
+            this.itemInfo.Receiver = null;
+            this.itemInfo.SelectedItem = null;
+            this.itemInfo.Size = new System.Drawing.Size(311, 290);
+            this.itemInfo.TabIndex = 138;
+            this.itemInfo.Visible = false;
             // 
             // GameScreen
             // 
@@ -1224,12 +1029,12 @@
             this.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1350, 691);
+            this.Controls.Add(this.itemInfo);
             this.Controls.Add(this.panelRoom);
             this.Controls.Add(this.panelSeller);
             this.Controls.Add(this.panelVillage);
             this.Controls.Add(this.labelLocation);
             this.Controls.Add(this.labelLocationFor);
-            this.Controls.Add(this.panelItem);
             this.Controls.Add(this.panelCharacterInventory);
             this.Controls.Add(this.buttonMaximizeMinimize);
             this.Controls.Add(this.labelGameTime);
@@ -1255,14 +1060,6 @@
             this.panelCharacterInventory.ResumeLayout(false);
             this.panelCharacterInventory.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterInventoryOwner)).EndInit();
-            this.panelItem.ResumeLayout(false);
-            this.panelItem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemOwner)).EndInit();
-            this.panelItemImage.ResumeLayout(false);
-            this.panelItemActions.ResumeLayout(false);
-            this.panelItemCost.ResumeLayout(false);
-            this.panelItemCost.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemCost)).EndInit();
             this.panelSeller.ResumeLayout(false);
             this.panelSeller.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SellerInventoryOwner)).EndInit();
@@ -1304,17 +1101,6 @@
         private System.Windows.Forms.Button buttonMaximizeMinimize;
         private System.Windows.Forms.Panel panelCharacterInventory;
         private System.Windows.Forms.Label labelCharacterInventoryTitle;
-        private System.Windows.Forms.Panel panelItem;
-        private System.Windows.Forms.Label labelItemName;
-        private System.Windows.Forms.Panel panelItemCost;
-        private System.Windows.Forms.Label labelItemCost;
-        private System.Windows.Forms.PictureBox pictureBoxItemCost;
-        private System.Windows.Forms.Panel panelItemActions;
-        private System.Windows.Forms.Button buttonItemUse;
-        private System.Windows.Forms.Label labelItemInfo;
-        private System.Windows.Forms.Button buttonItemTrade;
-        private System.Windows.Forms.Button buttonTrash;
-        private System.Windows.Forms.Label labelItemPanelTitle;
         private System.Windows.Forms.Label labelCharacterMoneyFor;
         private System.Windows.Forms.Panel panelCharacterMoney;
         private System.Windows.Forms.Label labelCharacterMoney;
@@ -1355,17 +1141,15 @@
         private System.Windows.Forms.ProgressBar progressBarCharacterExperience;
         private System.Windows.Forms.PictureBox pictureBoxCharacterExperience;
         private System.Windows.Forms.Button buttonNewGame;
-        private System.Windows.Forms.Panel panelItemImage;
-        private System.Windows.Forms.Button buttonItem;
         private System.Windows.Forms.Label labelSellerItemsFor;
         private System.Windows.Forms.Label labelSellerInfo;
-        private System.Windows.Forms.PictureBox pictureBoxItemOwner;
         private System.Windows.Forms.PictureBox pictureBoxCharacterInventoryOwner;
         private System.Windows.Forms.PictureBox SellerInventoryOwner;
         private System.Windows.Forms.PictureBox pictureBoxEnemyInventoryOwner;
         private Inventory inventoryCharacter;
         private Inventory inventorySeller;
         private Inventory inventoryEnemy;
+        private ItemInfo itemInfo;
     }
 }
 

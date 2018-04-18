@@ -139,7 +139,7 @@ namespace Engine
         /// <returns></returns>
         public bool OwnsItem(Item item)
         {
-            return Items.Contains(item);
+            return item != null && Items.Contains(item);
         }
     }
 }

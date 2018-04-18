@@ -64,7 +64,15 @@ namespace ROFL
         /// </summary>
         private Button[] _itemButtons;
 
-        public Func<Item, Item> UpdateSelection { get; private set; }
+        /// <summary>
+        /// Current selected item.
+        /// </summary>
+        public Item SelectedItem { get; set; }
+
+        /// <summary>
+        /// Function to run when updated selected item.
+        /// </summary>
+        public Func<Item, Item> UpdateSelectedItem { get; private set; }
 
         /// <summary>
         /// Default constructor.
@@ -84,8 +92,7 @@ namespace ROFL
         {
             Entity = entity;
             PageSize = pageSize;
-            UpdateSelection = updateSelection;
-
+            UpdateSelectedItem = updateSelection;
 
             SetPageVisibility();
 
@@ -134,12 +141,11 @@ namespace ROFL
         /// <summary>
         /// Update all items.
         /// </summary>
-        /// <param name="selectedItem">Current selected item</param>
-        public void UpdateAllItems(Item selectedItem = null)
+        public void UpdateAllItems()
         {
             for (var index = 0; index < PageSize; index++)
             {
-                UpdateItem(index, selectedItem);
+                UpdateItem(index);
             }
 
             SetPageVisibility();
@@ -149,8 +155,7 @@ namespace ROFL
         /// Update a single item.
         /// </summary>
         /// <param name="buttonIndex">Index of button to update</param>
-        /// <param name="selectedItem">Current selected item</param>
-        private void UpdateItem(int buttonIndex, Item selectedItem = null)
+        private void UpdateItem(int buttonIndex)
         {
             // Handle change of IsPaged to false.
             if (Page >= LastPage)
@@ -173,7 +178,7 @@ namespace ROFL
             button.BackgroundImage = (Bitmap)Resources.ResourceManager.GetObject($"Item_{item.UniqueNameId}");
             toolTipInfo.SetToolTip(button, $"{item.Name}{Environment.NewLine}{Environment.NewLine}{item.Description}");
 
-            if (item == selectedItem)
+            if (item == SelectedItem)
             {
                 button.FlatAppearance.BorderColor = Color.Black;
                 button.FlatAppearance.BorderSize = 5;
@@ -194,10 +199,8 @@ namespace ROFL
             {
                 itemIndex += PageSize * Page;
             }
-            
-            var selectedItem = Entity.Items[itemIndex];
 
-            UpdateSelection(selectedItem);
+            UpdateSelectedItem(Entity.Items[itemIndex]);
         }
 
         /// <summary>
@@ -228,6 +231,19 @@ namespace ROFL
                 Page = 0;
             }
             UpdateAllItems();
+        }
+
+        /// <summary>
+        /// Unselect item if hiding Inventory.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Inventory_VisibleChanged(object sender, EventArgs e)
+        {
+            if (! Visible && Entity != null && Entity.OwnsItem(SelectedItem))
+            {
+                UpdateSelectedItem(null);
+            }
         }
     }
 }
