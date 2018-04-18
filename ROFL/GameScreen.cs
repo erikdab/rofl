@@ -319,10 +319,12 @@ namespace ROFL
 	            UpdateInventoryItem(_game.GetEntity(entityType), entityType.ToString(), buttonIndex, itemIndex);
 	        }
 
-	        var controls = Controls.Find($"label{entityType}InventoryPage", true);
-	        if (controls.Length == 1)
+	        var panelPage = Controls.Find($"panel{entityType}InventoryPage", true);
+	        if (panelPage.Length == 1)
 	        {
-	            ((Label)(controls[0])).Text = $"Page: {_inventoryPage[entityType] + 1}";
+	            ((Panel)(panelPage[0])).Visible = MaxInventoryPages(entityType) > 1;
+	            var labelPage = (Label)Controls.Find($"label{entityType}InventoryPage", true)[0];
+                labelPage.Text = $"Page: {_inventoryPage[entityType] + 1}";
             }
 	    }
 
