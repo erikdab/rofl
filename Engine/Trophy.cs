@@ -21,6 +21,7 @@ namespace Engine
         /// Cost at which Item may be bought.
         /// </summary>
         public int BuyPrice { get; protected set; }
+
         /// <summary>
         /// Possible Trophy Types Count.
         /// </summary>
@@ -66,37 +67,6 @@ namespace Engine
             BuyPrice = SellPrice + 50;
 
             Description += ". It must be worth a lot!";
-        }
-
-        /// <summary>
-        /// Try to sell Item.
-        /// </summary>
-        public void SellTry(IEntity entity, IEntity toOtherEntity)
-        {
-            entity.Money += SellPrice;
-            entity.Items.Remove(this);
-        }
-
-        /// <summary>
-        /// Try to buy Item.
-        /// </summary>
-        public void BuyTry(IEntity entity, IEntity fromOtherEntity)
-        {
-            if (entity.InventorySize == entity.Items.Count)
-            {
-                throw new Exception($"{entity.Name} cannot buy {Name}, they have no room in their inventory.");
-            }
-            if (entity.Money >= BuyPrice)
-            {
-                entity.Money -= BuyPrice;
-
-                entity.Items.Add(this);
-                fromOtherEntity.Items.Remove(this);
-            }
-            else
-            {
-                throw new Exception($"{entity.Name} cannot buy {Name}, they have insufficient funds.");
-            }
         }
     }
 }

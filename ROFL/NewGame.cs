@@ -45,7 +45,7 @@ namespace ROFL
                 formScenario.ShowDialog();
 
                 // Create new Character and Game
-                var character = new Character(playerName);
+                var character = new Character(playerName, EntityType.Character);
                 var game = new Game(character);
 
                 // Then open the Game Screen

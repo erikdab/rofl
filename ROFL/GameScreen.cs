@@ -26,12 +26,12 @@ namespace ROFL
 		/// <summary>
 		/// Previous selected item Owner.
 		/// </summary>
-		private GameEntity _previousSelectedItemOwner;
+		private EntityType _previousReceiverType;
 
 		/// <summary>
 		/// Previous Inventory Holder opened.
 		/// </summary>
-		private GameEntity _previousTransferOwner;
+		private EntityType _previousGiverType;
 
 		/// <summary>
 		/// Previous selected item.
@@ -41,36 +41,36 @@ namespace ROFL
 		/// <summary>
 		/// Current Store Page for each inventory
 		/// </summary>
-		private Dictionary<GameEntity, int> _inventoryPage =
-			new Dictionary<GameEntity, int>
+		private Dictionary<EntityType, int> _inventoryPage =
+			new Dictionary<EntityType, int>
 		{
-			{GameEntity.Character, 0},
-			{GameEntity.Enemy, 0},
-		    {GameEntity.Seller, 0}
+			{EntityType.Character, 0},
+			{EntityType.Enemy, 0},
+		    {EntityType.Seller, 0}
         };
 
 		/// <summary>
 		/// How many Store Items can fit per Page.
 		/// </summary>
-		private readonly Dictionary<GameEntity, int> _inventoryPageSize =
-		    new Dictionary<GameEntity, int>
+		private readonly Dictionary<EntityType, int> _inventoryPageSize =
+		    new Dictionary<EntityType, int>
 		{
-			{GameEntity.Character, 12},
-		    {GameEntity.Enemy, 8},
-            {GameEntity.Seller, 16}
+			{EntityType.Character, 12},
+		    {EntityType.Enemy, 8},
+            {EntityType.Seller, 16}
 		};
 
 		/// <summary>
 		/// Max inventory page number.
 		/// </summary>
-		private int MaxInventoryPages(GameEntity entity) => Math.Max(1,(int)Math.Ceiling((double)_game.GetEntity(entity).Items.Count / _inventoryPageSize[entity]));
+		private int MaxInventoryPages(EntityType entityType) => Math.Max(1,(int)Math.Ceiling((double)_game.GetEntity(entityType).Items.Count / _inventoryPageSize[entityType]));
 
         /// <summary>
-        /// Does entity's inventory need pages?
+        /// Does entityType's inventory need pages?
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entityType"></param>
         /// <returns></returns>
-	    private bool ShouldPageInventory(GameEntity entity) => _game.Seller.Items.Count > _inventoryPageSize[entity];
+	    private bool ShouldPageInventory(EntityType entityType) => _game.Seller.Items.Count > _inventoryPageSize[entityType];
 
         /// <summary>
         /// Game Constructor.
@@ -129,14 +129,16 @@ namespace ROFL
 
 			labelRoomEvent.Text = " ..." + _game.RoomDescription;
 			labelExperienceGain.Text = _game.ExperienceGained.ToString();
-
-			panelRoomLoot.Visible = false;
-
+            
 			if (_game.Enemy?.Items.Count > 0 || _game.Enemy?.Money > 0)
 			{
 				panelRoomLoot.Visible = true;
 				UpdateEnemyInventoryPanel();
 			}
+			else
+			{
+			    panelRoomLoot.Visible = false;
+            }
 		}
 
 		/// <summary>
@@ -291,10 +293,10 @@ namespace ROFL
         /// <summary>
         /// Is Entity Inventory Panel Visible.
         /// </summary>
-        /// <param name="entity">Entity to check</param>
-	    private bool IsEntityInventoryPanelVisible(GameEntity entity)
+        /// <param name="entityType">Entity to check</param>
+	    private bool IsEntityInventoryPanelVisible(EntityType entityType)
 	    {
-	        return ((Panel)(Controls.Find($"panel{entity}InventoryItems", true)[0])).Visible;
+	        return ((Panel)(Controls.Find($"panel{entityType}InventoryItems", true)[0])).Visible;
         }
 
 
@@ -302,25 +304,25 @@ namespace ROFL
 	    /// Update Inventory Panel.
 	    /// Combine these into one function, which handles pagination too.
 	    /// </summary>
-	    private void UpdateEntityInventoryPanel(GameEntity entity)
+	    private void UpdateEntityInventoryPanel(EntityType entityType)
 	    {
-	        if (!IsEntityInventoryPanelVisible(entity)) return;
+	        if (!IsEntityInventoryPanelVisible(entityType)) return;
 
-	        if (_inventoryPage[entity] >= MaxInventoryPages(entity))
+	        if (_inventoryPage[entityType] >= MaxInventoryPages(entityType))
 	        {
-	            _inventoryPage[entity]--;
+	            _inventoryPage[entityType]--;
 	        }
 
-	        for (var buttonIndex = 0; buttonIndex < _inventoryPageSize[entity]; buttonIndex++)
+	        for (var buttonIndex = 0; buttonIndex < _inventoryPageSize[entityType]; buttonIndex++)
 	        {
-	            var itemIndex = _inventoryPageSize[entity] * _inventoryPage[entity] + buttonIndex;
-	            UpdateInventoryItem(_game.GetEntity(entity), entity.ToString(), buttonIndex, itemIndex);
+	            var itemIndex = _inventoryPageSize[entityType] * _inventoryPage[entityType] + buttonIndex;
+	            UpdateInventoryItem(_game.GetEntity(entityType), entityType.ToString(), buttonIndex, itemIndex);
 	        }
 
-	        var controls = Controls.Find($"label{entity}InventoryPage", true);
+	        var controls = Controls.Find($"label{entityType}InventoryPage", true);
 	        if (controls.Length == 1)
 	        {
-	            ((Label)(controls[0])).Text = $"Page: {_inventoryPage[entity] + 1}";
+	            ((Label)(controls[0])).Text = $"Page: {_inventoryPage[entityType] + 1}";
             }
 	    }
 
@@ -330,7 +332,7 @@ namespace ROFL
         /// </summary>
         private void UpdateCharacterInventoryPanel()
 		{
-            UpdateEntityInventoryPanel(GameEntity.Character);
+            UpdateEntityInventoryPanel(EntityType.Character);
         }
 
 		/// <summary>
@@ -338,7 +340,7 @@ namespace ROFL
 		/// </summary>
 		private void UpdateSellerInventoryPanel()
 		{
-		    UpdateEntityInventoryPanel(GameEntity.Seller);
+		    UpdateEntityInventoryPanel(EntityType.Seller);
 		}
 
 		/// <summary>
@@ -346,7 +348,7 @@ namespace ROFL
 		/// </summary>
 		private void UpdateEnemyInventoryPanel()
 		{
-		    var entity = GameEntity.Enemy;
+		    var entity = EntityType.Enemy;
             if (!IsEntityInventoryPanelVisible(entity)) return;
 
             labelRoomLootMoney.Text = $"{_game.Enemy.Money:C}";
@@ -365,62 +367,61 @@ namespace ROFL
 				return;
 			}
 
-			var owner = _game.GetItemOwnerEnum(_selectedItem);
+		    var result = ItemTransferEntities();
+		    var giver = result.Item1;
+		    var receiver = result.Item2;
 
 			// Item Panel is only visible if its owner inventory items panel stays visible.
-			panelItem.Visible = ((Panel)Controls.Find($"panel{owner.ToString()}InventoryItems", true)[0]).Visible;
+			panelItem.Visible = ((Panel)Controls.Find($"panel{giver.Type}InventoryItems", true)[0]).Visible;
 			if (!panelItem.Visible) return;
-
-			var transferOwner = panelSellerInventoryItems.Visible ? GameEntity.Seller :
-				panelEnemyInventoryItems.Visible ? GameEntity.Enemy : GameEntity.None;
-
+            
 			// Draw rest if owner, item or transfer owner changed
 			if (_previousSelectedItem == _selectedItem &&
-				_previousSelectedItemOwner == owner &&
-				_previousTransferOwner == transferOwner) return;
-			_previousTransferOwner = transferOwner;
+				_previousReceiverType == receiver?.Type &&
+				_previousGiverType == giver.Type) return;
+			_previousGiverType = giver.Type;
 
-			// Item Transfer
-			var transferDirection = owner == GameEntity.Character ? "Give" : "Take";
-			var tradePriceMessage = "";
+            // Item Transfer
+		    var transferType = _selectedItem.TransferTypeFromTo(giver, receiver);
+            
+		    buttonItemTrade.Visible = transferType != TransferType.None;
+            var tradePriceMessage = "";
 
-			// Item ISellable
-			var sellableItem = (_selectedItem as ITradeable);
-			panelItemCost.Visible = sellableItem != null;
-			buttonItemTrade.Visible = panelSellerInventoryItems.Visible || panelEnemyInventoryItems.Visible;
-			if (sellableItem != null)
+            // Item ITradeable
+            var tradeableItem = (_selectedItem as ITradeable);
+			panelItemCost.Visible = tradeableItem != null;
+			if (tradeableItem != null)
 			{
-				var tradeDirection = owner == GameEntity.Seller ? "Buy" : "Sell";
-				var tradePrice = owner == GameEntity.Seller ? sellableItem.BuyPrice : sellableItem.SellPrice;
+			    var price = _selectedItem.TradePrice(tradeableItem, transferType);
 
-				// Item Cost Panel
-				toolTipInfo.SetToolTip(labelItemCost, $"{tradeDirection}ing Price");
-				labelItemCost.Text = $"{tradePrice:C}";
+                // Item Cost Panel
+                toolTipInfo.SetToolTip(labelItemCost, $"{transferType}ing Price");
+				labelItemCost.Text = $"{price:C}";
 
-				if (panelSellerInventoryItems.Visible)
+				if (transferType == TransferType.Sell || transferType == TransferType.Buy)
 				{
-					transferDirection = tradeDirection;
-					tradePriceMessage = $"for {tradePrice:C}";
+					tradePriceMessage = $" for {price:C}";
 				}
 			}
-			// Transfer (Give / Take) or Trade (Buy / Sell) Action:
-			buttonItemTrade.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"Action_{transferDirection}");
-			toolTipInfo.SetToolTip(buttonItemTrade, $"You can ${transferDirection} this {_selectedItem.Name}{tradePriceMessage}.");
+			// Transfer Action:
+			buttonItemTrade.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"Action_{transferType}");
+			toolTipInfo.SetToolTip(buttonItemTrade, $"You can {transferType} this {_selectedItem.Name}{tradePriceMessage}.");
 
 			// Draw rest if owner or item changed
 			if (_previousSelectedItem == _selectedItem &&
-				_previousSelectedItemOwner == owner) return;
-			_previousSelectedItemOwner = owner;
+				_previousReceiverType == giver.Type) return;
+			_previousReceiverType = giver.Type;
 
 			// Owner Image
-			pictureBoxItemOwner.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"Inventory_{owner.ToString()}");
-			toolTipInfo.SetToolTip(pictureBoxItemOwner, $"Located in {owner.ToString()} Inventory.");
+			pictureBoxItemOwner.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"Inventory_{giver.Type}");
+			toolTipInfo.SetToolTip(pictureBoxItemOwner, $"Located in {giver.Type} Inventory.");
 
 			// Item Trashing
 			buttonTrash.Visible = _selectedItem.CanTrash(_game.Character);
+		    toolTipInfo.SetToolTip(buttonTrash, $"Trash {_selectedItem.Name}.");
 
-			// Draw rest if item changed
-			if (_previousSelectedItem == _selectedItem) return;
+            // Draw rest if item changed
+            if (_previousSelectedItem == _selectedItem) return;
 			_previousSelectedItem = _selectedItem;
 
 			// Item Info
@@ -564,27 +565,27 @@ namespace ROFL
         /// </summary>
         /// <param name="ownerString">Control to search for owner.</param>
         /// <returns>Owner of ownerString</returns>
-	    private GameEntity GetOwnerFromString(string ownerString)
+	    private EntityType GetOwnerFromString(string ownerString)
 	    {
-	        GameEntity entityEnum;
+	        EntityType entityType;
 	        if (ownerString.Contains("Enemy"))
 	        {
-	            entityEnum = GameEntity.Enemy;
+	            entityType = EntityType.Enemy;
 	        }
 	        else if (ownerString.Contains("Character"))
 	        {
-	            entityEnum = GameEntity.Character;
+	            entityType = EntityType.Character;
 	        }
 	        else if (ownerString.Contains("Seller"))
 	        {
-	            entityEnum = GameEntity.Seller;
+	            entityType = EntityType.Seller;
 	        }
 	        else
 	        {
-	            throw new Exception("Control not owned by a GameEntity!");
+	            throw new Exception("Control not owned by a EntityType!");
             }
 
-	        return entityEnum;
+	        return entityType;
 
         }
 
@@ -610,6 +611,22 @@ namespace ROFL
 			UpdateInventoryPanels();
 			UpdateItemPanel();
 		}
+
+        /// <summary>
+        /// Entites between which item can be transferred.
+        /// </summary>
+        /// <returns>Tuple of giver and receiver</returns>
+	    private Tuple<IEntity, IEntity> ItemTransferEntities()
+	    {
+	        var giver = _game.GetEntity(_game.GetItemOwnerEnum(_selectedItem));
+	        IEntity receiver = _game.Character;
+	        if (giver == _game.Character)
+	        {
+	            receiver = panelSellerInventoryItems.Visible ? _game.Seller : 
+	                panelEnemyInventoryItems.Visible ? _game.Enemy : null;
+	        }
+            return new Tuple<IEntity, IEntity>(giver, receiver);
+        }
 
 		/// <summary>
 		/// Try to perform an Action and print exception message if failed.
@@ -656,33 +673,17 @@ namespace ROFL
 		/// <param name="e"></param>
 		private void buttonItemTrade_Click(object sender, EventArgs e)
 		{
-			if (_selectedItem != null && _selectedItem is ITradeable tradeableItem)
-			{
-				Action action;
-				bool removeSelected = false;
-				if (_game.Character.OwnsItem(_selectedItem))
-				{
-					action = () => tradeableItem.SellTry(_game.Character, _game.Seller);
-					removeSelected = true;
-				}
-				else if (_game.Seller.OwnsItem(_selectedItem))
-				{
-					action = () => tradeableItem.BuyTry(_game.Character, _game.Seller);
-				}
-				else
-				{
-					action = () =>
-					{
-						_game.Character.Items.Add(_selectedItem);
-						_game.Enemy.Items.Remove(_selectedItem);
-					};
-				}
-				DoItemActionTry(action,
-					_selectedItem,
-					"trade",
-					"Trading",
-					removeSelected);
-			}
+		    if (_selectedItem == null) return;
+
+		    var result = ItemTransferEntities();
+		    var giver = result.Item1;
+		    var receiver = result.Item2;
+
+            DoItemActionTry(() => _selectedItem.TransferTry(giver, receiver),
+		        _selectedItem,
+		        "trade",
+		        "Trading",
+		        false);
 		}
 
 		/// <summary>
@@ -697,7 +698,7 @@ namespace ROFL
 			if (_selectedItem is ITradeable tradeableItem && tradeableItem.SellPrice > 0)
 			{
 				if (MessageBox.Show(
-						$"Are you sure you want to trash {_selectedItem.Name}? It can be sold for {tradeableItem.SellPrice} in the store!",
+						$"Are you sure you want to trash {_selectedItem.Name}? It can be sold for {tradeableItem.SellPrice:C} in the store!",
 						"Are you sure?",
 						MessageBoxButtons.YesNo) == DialogResult.No) return;
 			}
@@ -763,6 +764,8 @@ namespace ROFL
 			UpdateRoom();
 			UpdateLocation();
 			UpdatePlayerPanel();
+            if(panelEnemyInventoryItems.Visible)
+                UpdateItemPanel();
 			CheckVictoryCondition();
 		}
 

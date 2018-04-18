@@ -26,14 +26,6 @@ namespace Engine
     }
 
     /// <summary>
-    /// Possible Game GameEntity
-    /// </summary>
-    public enum GameEntity
-    {
-        Character, Seller, Enemy, None
-    }
-
-    /// <summary>
     /// Class holding the Game State.
     /// </summary>
     public class Game
@@ -51,12 +43,12 @@ namespace Engine
         /// <summary>
         /// Room Loot Character.
         /// </summary>
-        public Character Enemy { get; set; } = new Character("Loot", 8);
+        public Character Enemy { get; set; } = new Character("Loot", EntityType.Enemy, 8);
 
         /// <summary>
         /// NPC Seller Character.
         /// </summary>
-        public Character Seller { get; set; } = new Character("Store Seller", 64);
+        public Character Seller { get; set; } = new Character("Store Seller", EntityType.Seller, 128);
 
         /// <summary>
         /// Game Time Second
@@ -141,28 +133,27 @@ namespace Engine
 
             LootGenerator = new LootGenerator(Random);
             // Character starting items:
-            // Character.Items.AddRange(LootGenerator.GenerateInRange(3, 5, true));
-            Character.Items.AddRange(LootGenerator.Generate(16, true));
+            Character.Items.AddRange(LootGenerator.GenerateInRange(3, 5, true));
             StockSellerInventory();
         }
 
         /// <summary>
         /// Get the item owner.
         /// </summary>
-        /// <param name="entityEnum">Item to search owner of</param>
+        /// <param name="entityType">Item to search owner of</param>
         /// <returns>Owner</returns>
-        public IEntity GetEntity(GameEntity entityEnum)
+        public IEntity GetEntity(EntityType entityType)
         {
-            switch (entityEnum)
+            switch (entityType)
             {
-                case GameEntity.Character:
+                case EntityType.Character:
                     return Character;
-                case GameEntity.Seller:
+                case EntityType.Seller:
                     return Seller;
-                case GameEntity.Enemy:
+                case EntityType.Enemy:
                     return Enemy;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(entityEnum), entityEnum, null);
+                    throw new ArgumentOutOfRangeException(nameof(entityType), entityType, null);
             }
         }
 
@@ -171,21 +162,21 @@ namespace Engine
         /// </summary>
         /// <param name="item">Item to search owner of</param>
         /// <returns>Owner Name</returns>
-        public GameEntity GetItemOwnerEnum(Item item)
+        public EntityType GetItemOwnerEnum(Item item)
         {
             if (Character.OwnsItem(item))
             {
-                return GameEntity.Character;
+                return EntityType.Character;
             }
 
             if (Seller.OwnsItem(item))
             {
-                return GameEntity.Seller;
+                return EntityType.Seller;
             }
 
             if (Enemy.OwnsItem(item))
             {
-                return GameEntity.Enemy;
+                return EntityType.Enemy;
             }
 
             throw new Exception($"No one owns this item: {item.Name}!");
@@ -236,7 +227,7 @@ namespace Engine
                 RoomType = RoomType.Empty;
             }
 
-            Enemy = new Character("Loot", 8);
+            Enemy = new Character("Loot", EntityType.Enemy, 8);
 
             switch (RoomType)
             {
@@ -280,7 +271,10 @@ namespace Engine
         /// </summary>
         public void StockSellerInventory()
         {
-            Seller.Items = LootGenerator.Generate(Seller.InventorySize, true);
+            var minimum = Math.Min(16 + (DungeonLevel * 4), 64);
+            var maximum = Math.Min(32 + (DungeonLevel * 4), 80);
+            Seller.Items = LootGenerator.GenerateInRange(minimum, maximum, true);
+            Seller.Money = (int)Math.Floor(Random.Next(700, 1200) * 1.2 * (DungeonLevel + 1));
         }
 
         /// <summary>

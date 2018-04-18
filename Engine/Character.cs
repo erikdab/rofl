@@ -15,7 +15,7 @@ namespace Engine
         /// <summary>
         /// Inventory Size.
         /// </summary>
-        public int InventorySize { get; protected set; }
+        public int InventorySize { get; private set; }
 
         // Health Field
         private int _health;
@@ -26,12 +26,12 @@ namespace Engine
         /// <summary>
         /// Character Name.
         /// </summary>
-        public string Name { get; protected set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Character Level.
         /// </summary>
-        public int Level { get; protected set; } = 1;
+        public int Level { get; private set; } = 1;
 
         /// <summary>
         /// Character current Health.
@@ -58,7 +58,7 @@ namespace Engine
         /// <summary>
         /// Character maximum Health.
         /// </summary>
-        public int MaxHealth { get; protected set; } = 100;
+        public int MaxHealth { get; private set; } = 100;
 
         /// <summary>
         /// Character Experience - useful to gain new levels.
@@ -75,10 +75,6 @@ namespace Engine
         /// </summary>
         public int LevelUpRemainingCost => LevelUpCost > Experience ? LevelUpCost - Experience : 0;
 
-        public bool OwnsItem(Item item)
-        {
-            return Items.Contains(item);
-        }
 
         /// <summary>
         /// Character's Money.
@@ -86,15 +82,22 @@ namespace Engine
         public decimal Money { get; set; }
 
         /// <summary>
+        /// Entity Type.
+        /// </summary>
+        public EntityType Type { get; }
+
+        /// <summary>
         /// Base constructor.
         /// </summary>
         /// <param name="name">Character name.</param>
-        /// <param name="inventorySize"></param>
-        public Character(string name, int inventorySize = 16)
+        /// <param name="type">Entity Type.</param>
+        /// <param name="inventorySize">Inventory Size.</param>
+        public Character(string name, EntityType type, int inventorySize = 16)
         {
             Health = MaxHealth;
             Name = name;
             InventorySize = inventorySize;
+            Type = type;
         }
 
         /// <summary>
@@ -127,6 +130,16 @@ namespace Engine
             Experience -= LevelUpCost;
             Level++;
             MaxHealth += 20;
+        }
+
+        /// <summary>
+        /// Does Entity Own Item.
+        /// </summary>
+        /// <param name="item">Item to check</param>
+        /// <returns></returns>
+        public bool OwnsItem(Item item)
+        {
+            return Items.Contains(item);
         }
     }
 }

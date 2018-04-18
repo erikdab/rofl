@@ -7,6 +7,14 @@ using System.Threading.Tasks;
 namespace Engine
 {
     /// <summary>
+    /// Possible Game EntityType
+    /// </summary>
+    public enum EntityType
+    {
+        Character, Seller, Enemy, None
+    }
+
+    /// <summary>
     /// Base Entity interface.
     /// </summary>
     public interface IEntity
@@ -55,5 +63,10 @@ namespace Engine
         /// Entity Money.
         /// </summary>
         decimal Money { get; set; }
+
+        /// <summary>
+        /// Entity Type.
+        /// </summary>
+        EntityType Type { get; }
     }
 }
