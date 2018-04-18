@@ -34,10 +34,11 @@ namespace ROFL
 
 			GoFullscreen(true);
             
-            inventoryCharacter.InitializeInventory(_game.Character, 12, UpdateSelectedItem);
+            inventoryCharacter.InitializeInventory(_game.Player, 12, UpdateSelectedItem);
 		    inventorySeller.InitializeInventory(_game.Seller, 16, UpdateSelectedItem);
 		    inventoryEnemy.InitializeInventory(_game.Enemy, 8, UpdateSelectedItem);
-		    itemInfo.InitializeItemInfo(_game.Character, UpdateSelectedItem, UpdateControls);
+		    itemInfo.InitializeItemInfo(_game.Player, UpdateSelectedItem, UpdateControls);
+            characterInfo.InitializeCharacterInfo(_game.Player);
 		}
 
         /// <summary>
@@ -63,6 +64,11 @@ namespace ROFL
 	    {
 	        UpdateControls();
 	    }
+
+	    private void UpdatePlayerPanel()
+	    {
+	        characterInfo.UpdateInfo();
+        }
 
         /// <summary>
         /// Update all controls (labels, pictureboxes, etc.)
@@ -139,8 +145,8 @@ namespace ROFL
 	    private Tuple<IEntity, IEntity> ItemTransferEntities()
 	    {
 	        var giver = _game.GetEntity(_game.GetItemOwnerEnum(SelectedItem));
-	        IEntity receiver = giver != null ? _game.Character : null;
-	        if (giver == _game.Character)
+	        IEntity receiver = giver != null ? _game.Player : null;
+	        if (giver == _game.Player)
 	        {
 	            receiver = inventorySeller.Visible ? _game.Seller :
 	                inventoryEnemy.Visible ? _game.Enemy : null;
@@ -211,41 +217,15 @@ namespace ROFL
 			toolTipInfo.SetToolTip(buttonLocation3, labelLocation3.Text);
 			toolTipInfo.SetToolTip(buttonLocation4, labelLocation4.Text);
 		}
-
-		/// <summary>
-		/// Update Player Panel Controls.
-		/// </summary>
-		private void UpdatePlayerPanel()
-		{
-			// If received experience for more than 1 level, upgrade multiple times.
-			while (_game.Character.LevelUpRemainingCost == 0)
-			{
-				_game.Character.LevelUpTry();
-			}
-
-			labelCharacterName.Text = _game.Character.Name;
-
-			labelCharacterLevel.Text = _game.Character.Level.ToString();
-			labelCharacterMoney.Text = $"{_game.Character.Money:C}";
-
-			progressBarCharacterHealth.Maximum = _game.Character.MaxHealth;
-			progressBarCharacterHealth.Value = _game.Character.Health;
-			toolTipInfo.SetToolTip(progressBarCharacterHealth, HealthDescriptor());
-
-			progressBarCharacterExperience.Maximum = _game.Character.LevelUpCost;
-			progressBarCharacterExperience.Value = _game.Character.Experience;
-			toolTipInfo.SetToolTip(progressBarCharacterExperience,
-				$"You still need {_game.Character.LevelUpRemainingCost} Experience to Level Up.");
-		}
-
-		/// <summary>
+	    
+	    /// <summary>
 		/// Description of Health Status.
 		/// </summary>
 		/// <returns>Health Descriptor</returns>
 		public string HealthDescriptor()
 		{
-			var percentage = (double)_game.Character.Health / _game.Character.MaxHealth;
-			var healthPoints = $" ({_game.Character.Health}/{_game.Character.MaxHealth})";
+			var percentage = (double)_game.Player.Health / _game.Player.MaxHealth;
+			var healthPoints = $" ({_game.Player.Health}/{_game.Player.MaxHealth})";
 
 			if (percentage >= 1.0)
 			{
@@ -291,8 +271,8 @@ namespace ROFL
 			{
 				case GameLocation.Village:
 					panelSeller.Visible = !panelSeller.Visible;
-					UpdateSellerPanel();
-                    UpdateItemInfo();
+                    if(panelSeller.Visible)
+					    UpdateSellerPanel();
 					break;
 				case GameLocation.Dungeon:
 					EnterNewRoom();
@@ -351,9 +331,9 @@ namespace ROFL
 			switch (_game.GameLocation)
 			{
 				case GameLocation.Village:
-				    _game.Character.Health = _game.Character.MaxHealth;
+				    _game.Player.Health = _game.Player.MaxHealth;
 				    UpdatePlayerPanel();
-                    if (_game.Character.Health == _game.Character.MaxHealth)
+                    if (_game.Player.Health == _game.Player.MaxHealth)
 					{
 						MessageBox.Show(
 							"You are already rested and at full strength!",
@@ -426,7 +406,7 @@ namespace ROFL
         /// <param name="e"></param>
         private void buttonRoomLootTakeMoney_Click(object sender, EventArgs e)
 		{
-			_game.Character.Money += _game.Enemy.Money;
+			_game.Player.Money += _game.Enemy.Money;
 			_game.Enemy.Money = 0;
 
 			UpdatePlayerPanel();
@@ -442,8 +422,6 @@ namespace ROFL
 		{
 			panelRoom.Visible = false;
 		}
-
-
 
         /// <summary>
         /// Play or pause game and toggle the start pause icon.
@@ -543,6 +521,16 @@ namespace ROFL
         {
             ToggleFullscreen();
             buttonMaximizeMinimize.BackgroundImage = IsFullscreen() ? Properties.Resources.smaller : Properties.Resources.larger;
+        }
+
+        /// <summary>
+        /// Update Item Info when other inventories change visibility.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Inventory_VisibleChanged(object sender, EventArgs e)
+        {
+            UpdateItemInfo();
         }
     }
 }

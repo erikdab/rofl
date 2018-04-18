@@ -36,9 +36,9 @@ namespace Engine
         public Random  Random { get; protected set; } = new Random();
 
         /// <summary>
-        /// Player Character.
+        /// Player Player.
         /// </summary>
-        public Character Character { get; set; }
+        public Character Player { get; set; }
 
         /// <summary>
         /// Room Loot Character.
@@ -124,17 +124,17 @@ namespace Engine
         public bool GoalAchieved { get; protected set; }
 
         /// <summary>
-        /// Constructor with Character.
+        /// Constructor with Player.
         /// </summary>
-        /// <param name="character">Player Character</param>        
-        public Game(Character character)
+        /// <param name="player">Player Character</param>        
+        public Game(Character player)
         {
-            Character = character;
+            Player = player;
 
             LootGenerator = new LootGenerator(Random);
-            // Character starting items:
-            //Character.Items.AddRange(LootGenerator.GenerateInRange(3, 5, true));
-            Character.Items.AddRange(LootGenerator.Generate(14, true));
+            // Player starting items:
+            //Player.Items.AddRange(LootGenerator.GenerateInRange(3, 5, true));
+            Player.Items.AddRange(LootGenerator.Generate(14, true));
             StockSellerInventory();
         }
 
@@ -148,7 +148,7 @@ namespace Engine
             switch (entityType)
             {
                 case EntityType.Character:
-                    return Character;
+                    return Player;
                 case EntityType.Seller:
                     return Seller;
                 case EntityType.Enemy:
@@ -165,7 +165,7 @@ namespace Engine
         /// <returns>Owner Name</returns>
         public EntityType GetItemOwnerEnum(Item item)
         {
-            if (Character.OwnsItem(item))
+            if (Player.OwnsItem(item))
             {
                 return EntityType.Character;
             }
@@ -241,16 +241,16 @@ namespace Engine
                     ExperienceGained = Random.Next(15, 30) * DungeonLevel;
                     break;
                 case RoomType.Trap:
-                    var healthLost = Random.Next((int)Math.Floor((double)Character.MaxHealth / 5)) + (5 * DungeonLevel);
-                    if (Character.Health - healthLost <= 0)
+                    var healthLost = Random.Next((int)Math.Floor((double)Player.MaxHealth / 5)) + (5 * DungeonLevel);
+                    if (Player.Health - healthLost <= 0)
                     {
-                        Character.Money = Character.Money - healthLost < 0 ? 0 : Character.Money - healthLost;
-                        Character.Health = Character.MaxHealth;
+                        Player.Money = Player.Money - healthLost < 0 ? 0 : Player.Money - healthLost;
+                        Player.Health = Player.MaxHealth;
                         ChangeLocation(GameLocation.Village);
 
                         throw new Exception($"You Fainted in the Dungeon! Thankfully, another Adventurer saved you, at the small cost of {healthLost}");
                     }
-                    Character.Health -= healthLost;
+                    Player.Health -= healthLost;
                     RoomDescription = $"a Trap! Ouch! Be wary of these dungeons, Hero, they can be treacherous! You Lost {healthLost} Health!";
                     ExperienceGained = Random.Next(25, 40) * DungeonLevel;
                     break;
@@ -265,7 +265,7 @@ namespace Engine
                     break;
             }
 
-            Character.Experience += ExperienceGained;
+            Player.Experience += ExperienceGained;
         }
 
         /// <summary>

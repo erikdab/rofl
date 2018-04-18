@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharacterInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CharacterInfo.Designer.cs">
+      <DependentUpon>CharacterInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     <Compile Include="Scenario.Designer.cs">
       <DependentUpon>Scenario.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CharacterInfo.resx">
+      <DependentUpon>CharacterInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameScreen.resx">
       <DependentUpon>GameScreen.cs</DependentUpon>
     </EmbeddedResource>

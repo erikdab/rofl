@@ -141,7 +141,7 @@ namespace Engine
                 throw new Exception($"{giver.Name} cannot {type} {Name}, {receiver.Name} inventory is full.");
             }
 
-            // Only Character pays or receives money
+            // Only Player pays or receives money
             if (tradeableItem != null && type == TransferType.Sell || type == TransferType.Buy)
             {
                 var price = TradePrice(tradeableItem, type);

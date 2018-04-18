@@ -96,14 +96,14 @@ namespace ROFL
             }
 
             // Item Panel is only visible if its owner inventory items panel stays visible.
-            Visible = Giver != null && inventoryVisible;
-            if (Giver == null || !Visible) return;
+            Visible = inventoryVisible;
+            if (!Visible) return;
 
             // Draw rest if owner, item or transfer owner changed
             if (_previousSelectedItem == SelectedItem &&
                 _previousReceiverType == Receiver?.Type &&
                 _previousGiverType == Giver.Type) return;
-            _previousGiverType = Giver.Type;
+            _previousReceiverType = Receiver?.Type ?? EntityType.None;
 
             // Item Transfer
             var transferType = SelectedItem.TransferTypeFromTo(Giver, Receiver);
@@ -133,8 +133,8 @@ namespace ROFL
 
             // Draw rest if owner or item changed
             if (_previousSelectedItem == SelectedItem &&
-                _previousReceiverType == Giver.Type) return;
-            _previousReceiverType = Giver.Type;
+                _previousGiverType == Giver.Type) return;
+            _previousGiverType = Giver.Type;
 
             // Owner Image
             pictureBoxItemOwner.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"Inventory_{Giver.Type}");

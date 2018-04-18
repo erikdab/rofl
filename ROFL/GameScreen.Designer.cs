@@ -35,8 +35,6 @@
             this.buttonScenario = new System.Windows.Forms.Button();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.labelCharacterLevel = new System.Windows.Forms.Label();
-            this.progressBarCharacterHealth = new System.Windows.Forms.ProgressBar();
             this.buttonPlayPause = new System.Windows.Forms.Button();
             this.buttonMaximizeMinimize = new System.Windows.Forms.Button();
             this.buttonSellerClose = new System.Windows.Forms.Button();
@@ -46,22 +44,9 @@
             this.buttonLocation2 = new System.Windows.Forms.Button();
             this.buttonRoomClose = new System.Windows.Forms.Button();
             this.buttonRoomLootTakeMoney = new System.Windows.Forms.Button();
-            this.progressBarCharacterExperience = new System.Windows.Forms.ProgressBar();
-            this.labelCharacterMoney = new System.Windows.Forms.Label();
             this.labelRoomLootMoney = new System.Windows.Forms.Label();
             this.labelExperienceGain = new System.Windows.Forms.Label();
             this.timerSecond = new System.Windows.Forms.Timer(this.components);
-            this.labelCharacterNameFor = new System.Windows.Forms.Label();
-            this.labelCharacterName = new System.Windows.Forms.Label();
-            this.panelCharacter = new System.Windows.Forms.Panel();
-            this.panelCharacterExperience = new System.Windows.Forms.Panel();
-            this.pictureBoxCharacterExperience = new System.Windows.Forms.PictureBox();
-            this.labelCharacterMoneyFor = new System.Windows.Forms.Label();
-            this.panelCharacterMoney = new System.Windows.Forms.Panel();
-            this.pictureBoxCharacterMoney = new System.Windows.Forms.PictureBox();
-            this.labelCharacterLevelFor = new System.Windows.Forms.Label();
-            this.labelCharacterHealthFor = new System.Windows.Forms.Label();
-            this.labelCharacterTitle = new System.Windows.Forms.Label();
             this.labelGameTime = new System.Windows.Forms.Label();
             this.labelGameTimeFor = new System.Windows.Forms.Label();
             this.panelCharacterInventory = new System.Windows.Forms.Panel();
@@ -99,11 +84,7 @@
             this.labelRoomEventFor = new System.Windows.Forms.Label();
             this.labelRoom = new System.Windows.Forms.Label();
             this.itemInfo = new ROFL.ItemInfo();
-            this.panelCharacter.SuspendLayout();
-            this.panelCharacterExperience.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterExperience)).BeginInit();
-            this.panelCharacterMoney.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterMoney)).BeginInit();
+            this.characterInfo = new ROFL.CharacterInfo();
             this.panelCharacterInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterInventoryOwner)).BeginInit();
             this.panelSeller.SuspendLayout();
@@ -186,30 +167,6 @@
             this.toolTipInfo.SetToolTip(this.buttonClose, "Exit Game");
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
-            // labelCharacterLevel
-            // 
-            this.labelCharacterLevel.BackColor = System.Drawing.Color.Transparent;
-            this.labelCharacterLevel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelCharacterLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelCharacterLevel.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharacterLevel.Location = new System.Drawing.Point(30, 0);
-            this.labelCharacterLevel.Name = "labelCharacterLevel";
-            this.labelCharacterLevel.Size = new System.Drawing.Size(32, 32);
-            this.labelCharacterLevel.TabIndex = 80;
-            this.labelCharacterLevel.Text = "1";
-            this.labelCharacterLevel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.toolTipInfo.SetToolTip(this.labelCharacterLevel, "Character Level");
-            // 
-            // progressBarCharacterHealth
-            // 
-            this.progressBarCharacterHealth.Location = new System.Drawing.Point(102, 132);
-            this.progressBarCharacterHealth.Name = "progressBarCharacterHealth";
-            this.progressBarCharacterHealth.Size = new System.Drawing.Size(248, 32);
-            this.progressBarCharacterHealth.Step = 1;
-            this.progressBarCharacterHealth.TabIndex = 82;
-            this.toolTipInfo.SetToolTip(this.progressBarCharacterHealth, "You are at full Health.");
-            this.progressBarCharacterHealth.Value = 85;
             // 
             // buttonPlayPause
             // 
@@ -352,28 +309,6 @@
             this.buttonRoomLootTakeMoney.UseVisualStyleBackColor = false;
             this.buttonRoomLootTakeMoney.Click += new System.EventHandler(this.buttonRoomLootTakeMoney_Click);
             // 
-            // progressBarCharacterExperience
-            // 
-            this.progressBarCharacterExperience.Location = new System.Drawing.Point(62, -1);
-            this.progressBarCharacterExperience.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.progressBarCharacterExperience.Name = "progressBarCharacterExperience";
-            this.progressBarCharacterExperience.Size = new System.Drawing.Size(187, 34);
-            this.progressBarCharacterExperience.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBarCharacterExperience.TabIndex = 123;
-            this.toolTipInfo.SetToolTip(this.progressBarCharacterExperience, "You still need 0 Experience to Level Up.");
-            this.progressBarCharacterExperience.Value = 10;
-            // 
-            // labelCharacterMoney
-            // 
-            this.labelCharacterMoney.AutoSize = true;
-            this.labelCharacterMoney.BackColor = System.Drawing.Color.Transparent;
-            this.labelCharacterMoney.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharacterMoney.Location = new System.Drawing.Point(32, 1);
-            this.labelCharacterMoney.Name = "labelCharacterMoney";
-            this.labelCharacterMoney.Size = new System.Drawing.Size(113, 28);
-            this.labelCharacterMoney.TabIndex = 104;
-            this.labelCharacterMoney.Text = "Money Value";
-            // 
             // labelRoomLootMoney
             // 
             this.labelRoomLootMoney.AutoSize = true;
@@ -402,148 +337,6 @@
             this.timerSecond.Enabled = true;
             this.timerSecond.Interval = 1000;
             this.timerSecond.Tick += new System.EventHandler(this.timerSecond_Tick);
-            // 
-            // labelCharacterNameFor
-            // 
-            this.labelCharacterNameFor.BackColor = System.Drawing.Color.Transparent;
-            this.labelCharacterNameFor.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharacterNameFor.Location = new System.Drawing.Point(-1, 50);
-            this.labelCharacterNameFor.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.labelCharacterNameFor.Name = "labelCharacterNameFor";
-            this.labelCharacterNameFor.Size = new System.Drawing.Size(100, 33);
-            this.labelCharacterNameFor.TabIndex = 75;
-            this.labelCharacterNameFor.Text = "Name:";
-            this.labelCharacterNameFor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelCharacterName
-            // 
-            this.labelCharacterName.AutoSize = true;
-            this.labelCharacterName.BackColor = System.Drawing.Color.Transparent;
-            this.labelCharacterName.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharacterName.Location = new System.Drawing.Point(99, 54);
-            this.labelCharacterName.Name = "labelCharacterName";
-            this.labelCharacterName.Size = new System.Drawing.Size(114, 28);
-            this.labelCharacterName.TabIndex = 76;
-            this.labelCharacterName.Text = "Player Name";
-            // 
-            // panelCharacter
-            // 
-            this.panelCharacter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelCharacter.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelCharacter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelCharacter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCharacter.Controls.Add(this.panelCharacterExperience);
-            this.panelCharacter.Controls.Add(this.labelCharacterMoneyFor);
-            this.panelCharacter.Controls.Add(this.panelCharacterMoney);
-            this.panelCharacter.Controls.Add(this.labelCharacterLevelFor);
-            this.panelCharacter.Controls.Add(this.labelCharacterHealthFor);
-            this.panelCharacter.Controls.Add(this.progressBarCharacterHealth);
-            this.panelCharacter.Controls.Add(this.labelCharacterTitle);
-            this.panelCharacter.Controls.Add(this.labelCharacterName);
-            this.panelCharacter.Controls.Add(this.labelCharacterNameFor);
-            this.panelCharacter.Location = new System.Drawing.Point(972, 76);
-            this.panelCharacter.Name = "panelCharacter";
-            this.panelCharacter.Size = new System.Drawing.Size(366, 603);
-            this.panelCharacter.TabIndex = 77;
-            // 
-            // panelCharacterExperience
-            // 
-            this.panelCharacterExperience.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelCharacterExperience.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelCharacterExperience.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelCharacterExperience.Controls.Add(this.labelCharacterLevel);
-            this.panelCharacterExperience.Controls.Add(this.progressBarCharacterExperience);
-            this.panelCharacterExperience.Controls.Add(this.pictureBoxCharacterExperience);
-            this.panelCharacterExperience.Location = new System.Drawing.Point(101, 86);
-            this.panelCharacterExperience.Name = "panelCharacterExperience";
-            this.panelCharacterExperience.Size = new System.Drawing.Size(249, 32);
-            this.panelCharacterExperience.TabIndex = 122;
-            // 
-            // pictureBoxCharacterExperience
-            // 
-            this.pictureBoxCharacterExperience.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxCharacterExperience.BackgroundImage = global::ROFL.Properties.Resources.Experience;
-            this.pictureBoxCharacterExperience.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxCharacterExperience.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxCharacterExperience.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxCharacterExperience.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxCharacterExperience.Name = "pictureBoxCharacterExperience";
-            this.pictureBoxCharacterExperience.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxCharacterExperience.TabIndex = 103;
-            this.pictureBoxCharacterExperience.TabStop = false;
-            // 
-            // labelCharacterMoneyFor
-            // 
-            this.labelCharacterMoneyFor.BackColor = System.Drawing.Color.Transparent;
-            this.labelCharacterMoneyFor.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharacterMoneyFor.Location = new System.Drawing.Point(-1, 178);
-            this.labelCharacterMoneyFor.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.labelCharacterMoneyFor.Name = "labelCharacterMoneyFor";
-            this.labelCharacterMoneyFor.Size = new System.Drawing.Size(100, 33);
-            this.labelCharacterMoneyFor.TabIndex = 106;
-            this.labelCharacterMoneyFor.Text = "Money:";
-            this.labelCharacterMoneyFor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // panelCharacterMoney
-            // 
-            this.panelCharacterMoney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelCharacterMoney.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelCharacterMoney.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelCharacterMoney.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCharacterMoney.Controls.Add(this.labelCharacterMoney);
-            this.panelCharacterMoney.Controls.Add(this.pictureBoxCharacterMoney);
-            this.panelCharacterMoney.Location = new System.Drawing.Point(102, 178);
-            this.panelCharacterMoney.Name = "panelCharacterMoney";
-            this.panelCharacterMoney.Size = new System.Drawing.Size(248, 32);
-            this.panelCharacterMoney.TabIndex = 105;
-            // 
-            // pictureBoxCharacterMoney
-            // 
-            this.pictureBoxCharacterMoney.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxCharacterMoney.BackgroundImage = global::ROFL.Properties.Resources.Item_Money;
-            this.pictureBoxCharacterMoney.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxCharacterMoney.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxCharacterMoney.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBoxCharacterMoney.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxCharacterMoney.Name = "pictureBoxCharacterMoney";
-            this.pictureBoxCharacterMoney.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxCharacterMoney.TabIndex = 103;
-            this.pictureBoxCharacterMoney.TabStop = false;
-            // 
-            // labelCharacterLevelFor
-            // 
-            this.labelCharacterLevelFor.BackColor = System.Drawing.Color.Transparent;
-            this.labelCharacterLevelFor.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharacterLevelFor.Location = new System.Drawing.Point(-1, 90);
-            this.labelCharacterLevelFor.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.labelCharacterLevelFor.Name = "labelCharacterLevelFor";
-            this.labelCharacterLevelFor.Size = new System.Drawing.Size(100, 33);
-            this.labelCharacterLevelFor.TabIndex = 84;
-            this.labelCharacterLevelFor.Text = "Level:";
-            this.labelCharacterLevelFor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelCharacterHealthFor
-            // 
-            this.labelCharacterHealthFor.BackColor = System.Drawing.Color.Transparent;
-            this.labelCharacterHealthFor.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharacterHealthFor.Location = new System.Drawing.Point(-1, 135);
-            this.labelCharacterHealthFor.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.labelCharacterHealthFor.Name = "labelCharacterHealthFor";
-            this.labelCharacterHealthFor.Size = new System.Drawing.Size(100, 33);
-            this.labelCharacterHealthFor.TabIndex = 83;
-            this.labelCharacterHealthFor.Text = "Health:";
-            this.labelCharacterHealthFor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelCharacterTitle
-            // 
-            this.labelCharacterTitle.AutoSize = true;
-            this.labelCharacterTitle.BackColor = System.Drawing.Color.Transparent;
-            this.labelCharacterTitle.Font = new System.Drawing.Font("Segoe Print", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharacterTitle.Location = new System.Drawing.Point(3, 4);
-            this.labelCharacterTitle.Name = "labelCharacterTitle";
-            this.labelCharacterTitle.Size = new System.Drawing.Size(157, 47);
-            this.labelCharacterTitle.TabIndex = 78;
-            this.labelCharacterTitle.Text = "Character";
             // 
             // labelGameTime
             // 
@@ -638,6 +431,7 @@
             this.panelSeller.Size = new System.Drawing.Size(311, 603);
             this.panelSeller.TabIndex = 102;
             this.panelSeller.Visible = false;
+            this.panelSeller.VisibleChanged += new System.EventHandler(this.Inventory_VisibleChanged);
             // 
             // inventorySeller
             // 
@@ -815,6 +609,7 @@
             this.panelRoom.Size = new System.Drawing.Size(637, 603);
             this.panelRoom.TabIndex = 137;
             this.panelRoom.Visible = false;
+            this.panelRoom.VisibleChanged += new System.EventHandler(this.Inventory_VisibleChanged);
             // 
             // buttonNewGame
             // 
@@ -1021,6 +816,17 @@
             this.itemInfo.TabIndex = 138;
             this.itemInfo.Visible = false;
             // 
+            // characterInfo
+            // 
+            this.characterInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.characterInfo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("characterInfo.BackgroundImage")));
+            this.characterInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.characterInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.characterInfo.Location = new System.Drawing.Point(972, 76);
+            this.characterInfo.Name = "characterInfo";
+            this.characterInfo.Size = new System.Drawing.Size(366, 603);
+            this.characterInfo.TabIndex = 139;
+            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1029,6 +835,7 @@
             this.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1350, 691);
+            this.Controls.Add(this.characterInfo);
             this.Controls.Add(this.itemInfo);
             this.Controls.Add(this.panelRoom);
             this.Controls.Add(this.panelSeller);
@@ -1040,7 +847,6 @@
             this.Controls.Add(this.labelGameTime);
             this.Controls.Add(this.labelGameTimeFor);
             this.Controls.Add(this.buttonPlayPause);
-            this.Controls.Add(this.panelCharacter);
             this.Controls.Add(this.buttonHelp);
             this.Controls.Add(this.buttonScenario);
             this.Controls.Add(this.buttonMinimize);
@@ -1050,13 +856,6 @@
             this.Name = "GameScreen";
             this.Text = "ROFL: Real or Forged Legends";
             this.Shown += new System.EventHandler(this.GameScreen_Shown);
-            this.panelCharacter.ResumeLayout(false);
-            this.panelCharacter.PerformLayout();
-            this.panelCharacterExperience.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterExperience)).EndInit();
-            this.panelCharacterMoney.ResumeLayout(false);
-            this.panelCharacterMoney.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterMoney)).EndInit();
             this.panelCharacterInventory.ResumeLayout(false);
             this.panelCharacterInventory.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterInventoryOwner)).EndInit();
@@ -1087,24 +886,12 @@
         private System.Windows.Forms.Button buttonScenario;
         private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.Timer timerSecond;
-        private System.Windows.Forms.Label labelCharacterNameFor;
-        private System.Windows.Forms.Label labelCharacterName;
-        private System.Windows.Forms.Panel panelCharacter;
-        private System.Windows.Forms.Label labelCharacterLevel;
-        private System.Windows.Forms.Label labelCharacterTitle;
-        private System.Windows.Forms.Label labelCharacterLevelFor;
-        private System.Windows.Forms.Label labelCharacterHealthFor;
-        private System.Windows.Forms.ProgressBar progressBarCharacterHealth;
         private System.Windows.Forms.Button buttonPlayPause;
         private System.Windows.Forms.Label labelGameTime;
         private System.Windows.Forms.Label labelGameTimeFor;
         private System.Windows.Forms.Button buttonMaximizeMinimize;
         private System.Windows.Forms.Panel panelCharacterInventory;
         private System.Windows.Forms.Label labelCharacterInventoryTitle;
-        private System.Windows.Forms.Label labelCharacterMoneyFor;
-        private System.Windows.Forms.Panel panelCharacterMoney;
-        private System.Windows.Forms.Label labelCharacterMoney;
-        private System.Windows.Forms.PictureBox pictureBoxCharacterMoney;
         private System.Windows.Forms.Panel panelSeller;
         private System.Windows.Forms.Button buttonSellerClose;
         private System.Windows.Forms.Label labelSellerTitle;
@@ -1137,9 +924,6 @@
         private System.Windows.Forms.Panel panelExperienceGain;
         private System.Windows.Forms.Label labelExperienceGain;
         private System.Windows.Forms.PictureBox pictureBoxExperienceGain;
-        private System.Windows.Forms.Panel panelCharacterExperience;
-        private System.Windows.Forms.ProgressBar progressBarCharacterExperience;
-        private System.Windows.Forms.PictureBox pictureBoxCharacterExperience;
         private System.Windows.Forms.Button buttonNewGame;
         private System.Windows.Forms.Label labelSellerItemsFor;
         private System.Windows.Forms.Label labelSellerInfo;
@@ -1150,6 +934,7 @@
         private Inventory inventorySeller;
         private Inventory inventoryEnemy;
         private ItemInfo itemInfo;
+        private CharacterInfo characterInfo;
     }
 }
 
