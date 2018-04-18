@@ -133,7 +133,8 @@ namespace Engine
 
             LootGenerator = new LootGenerator(Random);
             // Character starting items:
-            Character.Items.AddRange(LootGenerator.GenerateInRange(3, 5, true));
+            //Character.Items.AddRange(LootGenerator.GenerateInRange(3, 5, true));
+            Character.Items.AddRange(LootGenerator.Generate(14, true));
             StockSellerInventory();
         }
 
@@ -227,7 +228,8 @@ namespace Engine
                 RoomType = RoomType.Empty;
             }
 
-            Enemy = new Character("Loot", EntityType.Enemy, 8);
+            Enemy.Items.Clear();
+            Enemy.Money = 0;
 
             switch (RoomType)
             {

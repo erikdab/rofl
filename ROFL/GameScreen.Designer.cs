@@ -43,10 +43,7 @@
             this.labelItemCost = new System.Windows.Forms.Label();
             this.buttonItemTrade = new System.Windows.Forms.Button();
             this.buttonTrash = new System.Windows.Forms.Button();
-            this.buttonCharacterInventoryToggle = new System.Windows.Forms.Button();
             this.buttonSellerClose = new System.Windows.Forms.Button();
-            this.buttonSellerInventoryPageLeft = new System.Windows.Forms.Button();
-            this.buttonSellerInventoryPageRight = new System.Windows.Forms.Button();
             this.buttonLocation1 = new System.Windows.Forms.Button();
             this.buttonLocation3 = new System.Windows.Forms.Button();
             this.buttonLocation4 = new System.Windows.Forms.Button();
@@ -54,13 +51,9 @@
             this.buttonRoomClose = new System.Windows.Forms.Button();
             this.buttonRoomLootTakeMoney = new System.Windows.Forms.Button();
             this.progressBarCharacterExperience = new System.Windows.Forms.ProgressBar();
-            this.buttonCharacterInventoryPageRight = new System.Windows.Forms.Button();
-            this.buttonCharacterInventoryPageLeft = new System.Windows.Forms.Button();
             this.labelCharacterMoney = new System.Windows.Forms.Label();
             this.labelRoomLootMoney = new System.Windows.Forms.Label();
             this.labelExperienceGain = new System.Windows.Forms.Label();
-            this.buttonCharacterInventory1 = new System.Windows.Forms.Button();
-            this.buttonCharacterInventory0 = new System.Windows.Forms.Button();
             this.timerSecond = new System.Windows.Forms.Timer(this.components);
             this.labelCharacterNameFor = new System.Windows.Forms.Label();
             this.labelCharacterName = new System.Windows.Forms.Label();
@@ -73,22 +66,9 @@
             this.labelCharacterLevelFor = new System.Windows.Forms.Label();
             this.labelCharacterHealthFor = new System.Windows.Forms.Label();
             this.labelCharacterTitle = new System.Windows.Forms.Label();
-            this.panelCharacterInventoryItems = new System.Windows.Forms.Panel();
-            this.buttonCharacterInventory11 = new System.Windows.Forms.Button();
-            this.buttonCharacterInventory10 = new System.Windows.Forms.Button();
-            this.buttonCharacterInventory8 = new System.Windows.Forms.Button();
-            this.buttonCharacterInventory9 = new System.Windows.Forms.Button();
-            this.buttonCharacterInventory7 = new System.Windows.Forms.Button();
-            this.buttonCharacterInventory6 = new System.Windows.Forms.Button();
-            this.buttonCharacterInventory4 = new System.Windows.Forms.Button();
-            this.buttonCharacterInventory5 = new System.Windows.Forms.Button();
-            this.buttonCharacterInventory3 = new System.Windows.Forms.Button();
-            this.buttonCharacterInventory2 = new System.Windows.Forms.Button();
             this.labelGameTime = new System.Windows.Forms.Label();
             this.labelGameTimeFor = new System.Windows.Forms.Label();
             this.panelCharacterInventory = new System.Windows.Forms.Panel();
-            this.panelCharacterInventoryPage = new System.Windows.Forms.Panel();
-            this.labelCharacterInventoryPage = new System.Windows.Forms.Label();
             this.pictureBoxCharacterInventoryOwner = new System.Windows.Forms.PictureBox();
             this.labelCharacterInventoryTitle = new System.Windows.Forms.Label();
             this.panelItem = new System.Windows.Forms.Panel();
@@ -102,28 +82,9 @@
             this.pictureBoxItemCost = new System.Windows.Forms.PictureBox();
             this.labelItemName = new System.Windows.Forms.Label();
             this.panelSeller = new System.Windows.Forms.Panel();
-            this.panelSellerInventoryPage = new System.Windows.Forms.Panel();
-            this.labelSellerInventoryPage = new System.Windows.Forms.Label();
             this.SellerInventoryOwner = new System.Windows.Forms.PictureBox();
             this.labelSellerItemsFor = new System.Windows.Forms.Label();
             this.labelSellerInfo = new System.Windows.Forms.Label();
-            this.panelSellerInventoryItems = new System.Windows.Forms.Panel();
-            this.buttonSellerInventory15 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory14 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory12 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory13 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory11 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory10 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory8 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory9 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory7 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory6 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory4 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory5 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory3 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory2 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory0 = new System.Windows.Forms.Button();
-            this.buttonSellerInventory1 = new System.Windows.Forms.Button();
             this.labelSellerTitle = new System.Windows.Forms.Label();
             this.labelLocation = new System.Windows.Forms.Label();
             this.labelLocationFor = new System.Windows.Forms.Label();
@@ -141,15 +102,6 @@
             this.labelRoomEvent = new System.Windows.Forms.Label();
             this.panelRoomLoot = new System.Windows.Forms.Panel();
             this.pictureBoxEnemyInventoryOwner = new System.Windows.Forms.PictureBox();
-            this.panelEnemyInventoryItems = new System.Windows.Forms.Panel();
-            this.buttonEnemyInventory7 = new System.Windows.Forms.Button();
-            this.buttonEnemyInventory6 = new System.Windows.Forms.Button();
-            this.buttonEnemyInventory4 = new System.Windows.Forms.Button();
-            this.buttonEnemyInventory5 = new System.Windows.Forms.Button();
-            this.buttonEnemyInventory3 = new System.Windows.Forms.Button();
-            this.buttonEnemyInventory2 = new System.Windows.Forms.Button();
-            this.buttonEnemyInventory0 = new System.Windows.Forms.Button();
-            this.buttonEnemyInventory1 = new System.Windows.Forms.Button();
             this.labelRoomLootItems = new System.Windows.Forms.Label();
             this.labelRoomLootMoneyFor = new System.Windows.Forms.Label();
             this.labelRoomLootTitle = new System.Windows.Forms.Label();
@@ -157,14 +109,15 @@
             this.pictureBoxRoomLootMoney = new System.Windows.Forms.PictureBox();
             this.labelRoomEventFor = new System.Windows.Forms.Label();
             this.labelRoom = new System.Windows.Forms.Label();
+            this.inventoryCharacter = new ROFL.Inventory();
+            this.inventorySeller = new ROFL.Inventory();
+            this.inventoryEnemy = new ROFL.Inventory();
             this.panelCharacter.SuspendLayout();
             this.panelCharacterExperience.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterExperience)).BeginInit();
             this.panelCharacterMoney.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterMoney)).BeginInit();
-            this.panelCharacterInventoryItems.SuspendLayout();
             this.panelCharacterInventory.SuspendLayout();
-            this.panelCharacterInventoryPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterInventoryOwner)).BeginInit();
             this.panelItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemOwner)).BeginInit();
@@ -173,16 +126,13 @@
             this.panelItemCost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemCost)).BeginInit();
             this.panelSeller.SuspendLayout();
-            this.panelSellerInventoryPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SellerInventoryOwner)).BeginInit();
-            this.panelSellerInventoryItems.SuspendLayout();
             this.panelVillage.SuspendLayout();
             this.panelRoom.SuspendLayout();
             this.panelExperienceGain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExperienceGain)).BeginInit();
             this.panelRoomLoot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEnemyInventoryOwner)).BeginInit();
-            this.panelEnemyInventoryItems.SuspendLayout();
             this.panelRoomLootMoney.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRoomLootMoney)).BeginInit();
             this.SuspendLayout();
@@ -375,22 +325,6 @@
             this.buttonTrash.UseVisualStyleBackColor = false;
             this.buttonTrash.Click += new System.EventHandler(this.buttonTrash_Click);
             // 
-            // buttonCharacterInventoryToggle
-            // 
-            this.buttonCharacterInventoryToggle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventoryToggle.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventoryToggle.BackgroundImage = global::ROFL.Properties.Resources.down;
-            this.buttonCharacterInventoryToggle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventoryToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventoryToggle.Location = new System.Drawing.Point(926, 76);
-            this.buttonCharacterInventoryToggle.Margin = new System.Windows.Forms.Padding(40, 3, 3, 3);
-            this.buttonCharacterInventoryToggle.Name = "buttonCharacterInventoryToggle";
-            this.buttonCharacterInventoryToggle.Size = new System.Drawing.Size(40, 40);
-            this.buttonCharacterInventoryToggle.TabIndex = 95;
-            this.toolTipInfo.SetToolTip(this.buttonCharacterInventoryToggle, "Toggle Inventory");
-            this.buttonCharacterInventoryToggle.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventoryToggle.Click += new System.EventHandler(this.buttonCharacterInventoryToggle_Click);
-            // 
             // buttonSellerClose
             // 
             this.buttonSellerClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -406,40 +340,6 @@
             this.toolTipInfo.SetToolTip(this.buttonSellerClose, "Close Store");
             this.buttonSellerClose.UseVisualStyleBackColor = false;
             this.buttonSellerClose.Click += new System.EventHandler(this.buttonLocation1_Click);
-            // 
-            // buttonSellerInventoryPageLeft
-            // 
-            this.buttonSellerInventoryPageLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventoryPageLeft.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventoryPageLeft.BackgroundImage = global::ROFL.Properties.Resources.left;
-            this.buttonSellerInventoryPageLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventoryPageLeft.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.buttonSellerInventoryPageLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventoryPageLeft.Location = new System.Drawing.Point(-1, -1);
-            this.buttonSellerInventoryPageLeft.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventoryPageLeft.Name = "buttonSellerInventoryPageLeft";
-            this.buttonSellerInventoryPageLeft.Size = new System.Drawing.Size(40, 40);
-            this.buttonSellerInventoryPageLeft.TabIndex = 110;
-            this.toolTipInfo.SetToolTip(this.buttonSellerInventoryPageLeft, "Previous Store Page");
-            this.buttonSellerInventoryPageLeft.UseVisualStyleBackColor = false;
-            this.buttonSellerInventoryPageLeft.Click += new System.EventHandler(this.buttonInventoryPageLeft_Click);
-            // 
-            // buttonSellerInventoryPageRight
-            // 
-            this.buttonSellerInventoryPageRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventoryPageRight.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventoryPageRight.BackgroundImage = global::ROFL.Properties.Resources.right;
-            this.buttonSellerInventoryPageRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventoryPageRight.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.buttonSellerInventoryPageRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventoryPageRight.Location = new System.Drawing.Point(217, -1);
-            this.buttonSellerInventoryPageRight.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventoryPageRight.Name = "buttonSellerInventoryPageRight";
-            this.buttonSellerInventoryPageRight.Size = new System.Drawing.Size(40, 40);
-            this.buttonSellerInventoryPageRight.TabIndex = 136;
-            this.toolTipInfo.SetToolTip(this.buttonSellerInventoryPageRight, "Next Store Page");
-            this.buttonSellerInventoryPageRight.UseVisualStyleBackColor = false;
-            this.buttonSellerInventoryPageRight.Click += new System.EventHandler(this.buttonInventoryPageRight_Click);
             // 
             // buttonLocation1
             // 
@@ -545,40 +445,6 @@
             this.toolTipInfo.SetToolTip(this.progressBarCharacterExperience, "You still need 0 Experience to Level Up.");
             this.progressBarCharacterExperience.Value = 10;
             // 
-            // buttonCharacterInventoryPageRight
-            // 
-            this.buttonCharacterInventoryPageRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventoryPageRight.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventoryPageRight.BackgroundImage = global::ROFL.Properties.Resources.right;
-            this.buttonCharacterInventoryPageRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventoryPageRight.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.buttonCharacterInventoryPageRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventoryPageRight.Location = new System.Drawing.Point(217, -1);
-            this.buttonCharacterInventoryPageRight.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventoryPageRight.Name = "buttonCharacterInventoryPageRight";
-            this.buttonCharacterInventoryPageRight.Size = new System.Drawing.Size(40, 40);
-            this.buttonCharacterInventoryPageRight.TabIndex = 156;
-            this.toolTipInfo.SetToolTip(this.buttonCharacterInventoryPageRight, "Next Store Page");
-            this.buttonCharacterInventoryPageRight.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventoryPageRight.Click += new System.EventHandler(this.buttonInventoryPageRight_Click);
-            // 
-            // buttonCharacterInventoryPageLeft
-            // 
-            this.buttonCharacterInventoryPageLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventoryPageLeft.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventoryPageLeft.BackgroundImage = global::ROFL.Properties.Resources.left;
-            this.buttonCharacterInventoryPageLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventoryPageLeft.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.buttonCharacterInventoryPageLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventoryPageLeft.Location = new System.Drawing.Point(-1, -1);
-            this.buttonCharacterInventoryPageLeft.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventoryPageLeft.Name = "buttonCharacterInventoryPageLeft";
-            this.buttonCharacterInventoryPageLeft.Size = new System.Drawing.Size(40, 40);
-            this.buttonCharacterInventoryPageLeft.TabIndex = 155;
-            this.toolTipInfo.SetToolTip(this.buttonCharacterInventoryPageLeft, "Previous Store Page");
-            this.buttonCharacterInventoryPageLeft.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventoryPageLeft.Click += new System.EventHandler(this.buttonInventoryPageLeft_Click);
-            // 
             // labelCharacterMoney
             // 
             this.labelCharacterMoney.AutoSize = true;
@@ -612,36 +478,6 @@
             this.labelExperienceGain.TabIndex = 104;
             this.labelExperienceGain.Text = "Experience Gain";
             this.labelExperienceGain.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // buttonCharacterInventory1
-            // 
-            this.buttonCharacterInventory1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventory1.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventory1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventory1.FlatAppearance.BorderSize = 0;
-            this.buttonCharacterInventory1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventory1.Location = new System.Drawing.Point(64, 0);
-            this.buttonCharacterInventory1.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventory1.Name = "buttonCharacterInventory1";
-            this.buttonCharacterInventory1.Size = new System.Drawing.Size(64, 64);
-            this.buttonCharacterInventory1.TabIndex = 86;
-            this.buttonCharacterInventory1.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventory1.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonCharacterInventory0
-            // 
-            this.buttonCharacterInventory0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventory0.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventory0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventory0.FlatAppearance.BorderSize = 0;
-            this.buttonCharacterInventory0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventory0.Location = new System.Drawing.Point(0, 0);
-            this.buttonCharacterInventory0.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventory0.Name = "buttonCharacterInventory0";
-            this.buttonCharacterInventory0.Size = new System.Drawing.Size(64, 64);
-            this.buttonCharacterInventory0.TabIndex = 101;
-            this.buttonCharacterInventory0.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventory0.Click += new System.EventHandler(this.buttonInventoryItem_Click);
             // 
             // timerSecond
             // 
@@ -791,177 +627,6 @@
             this.labelCharacterTitle.TabIndex = 78;
             this.labelCharacterTitle.Text = "Character";
             // 
-            // panelCharacterInventoryItems
-            // 
-            this.panelCharacterInventoryItems.BackgroundImage = global::ROFL.Properties.Resources.Item_Blank;
-            this.panelCharacterInventoryItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCharacterInventoryItems.Controls.Add(this.buttonCharacterInventory11);
-            this.panelCharacterInventoryItems.Controls.Add(this.buttonCharacterInventory10);
-            this.panelCharacterInventoryItems.Controls.Add(this.buttonCharacterInventory8);
-            this.panelCharacterInventoryItems.Controls.Add(this.buttonCharacterInventory9);
-            this.panelCharacterInventoryItems.Controls.Add(this.buttonCharacterInventory7);
-            this.panelCharacterInventoryItems.Controls.Add(this.buttonCharacterInventory6);
-            this.panelCharacterInventoryItems.Controls.Add(this.buttonCharacterInventory4);
-            this.panelCharacterInventoryItems.Controls.Add(this.buttonCharacterInventory5);
-            this.panelCharacterInventoryItems.Controls.Add(this.buttonCharacterInventory3);
-            this.panelCharacterInventoryItems.Controls.Add(this.buttonCharacterInventory2);
-            this.panelCharacterInventoryItems.Controls.Add(this.buttonCharacterInventory0);
-            this.panelCharacterInventoryItems.Controls.Add(this.buttonCharacterInventory1);
-            this.panelCharacterInventoryItems.Location = new System.Drawing.Point(29, 54);
-            this.panelCharacterInventoryItems.Name = "panelCharacterInventoryItems";
-            this.panelCharacterInventoryItems.Size = new System.Drawing.Size(258, 194);
-            this.panelCharacterInventoryItems.TabIndex = 150;
-            // 
-            // buttonCharacterInventory11
-            // 
-            this.buttonCharacterInventory11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventory11.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventory11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventory11.FlatAppearance.BorderSize = 0;
-            this.buttonCharacterInventory11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventory11.Location = new System.Drawing.Point(192, 128);
-            this.buttonCharacterInventory11.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventory11.Name = "buttonCharacterInventory11";
-            this.buttonCharacterInventory11.Size = new System.Drawing.Size(64, 64);
-            this.buttonCharacterInventory11.TabIndex = 111;
-            this.buttonCharacterInventory11.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventory11.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonCharacterInventory10
-            // 
-            this.buttonCharacterInventory10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventory10.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventory10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventory10.FlatAppearance.BorderSize = 0;
-            this.buttonCharacterInventory10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventory10.Location = new System.Drawing.Point(128, 128);
-            this.buttonCharacterInventory10.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventory10.Name = "buttonCharacterInventory10";
-            this.buttonCharacterInventory10.Size = new System.Drawing.Size(64, 64);
-            this.buttonCharacterInventory10.TabIndex = 110;
-            this.buttonCharacterInventory10.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventory10.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonCharacterInventory8
-            // 
-            this.buttonCharacterInventory8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventory8.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventory8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventory8.FlatAppearance.BorderSize = 0;
-            this.buttonCharacterInventory8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventory8.Location = new System.Drawing.Point(0, 128);
-            this.buttonCharacterInventory8.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventory8.Name = "buttonCharacterInventory8";
-            this.buttonCharacterInventory8.Size = new System.Drawing.Size(64, 64);
-            this.buttonCharacterInventory8.TabIndex = 109;
-            this.buttonCharacterInventory8.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventory8.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonCharacterInventory9
-            // 
-            this.buttonCharacterInventory9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventory9.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventory9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventory9.FlatAppearance.BorderSize = 0;
-            this.buttonCharacterInventory9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventory9.Location = new System.Drawing.Point(64, 128);
-            this.buttonCharacterInventory9.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventory9.Name = "buttonCharacterInventory9";
-            this.buttonCharacterInventory9.Size = new System.Drawing.Size(64, 64);
-            this.buttonCharacterInventory9.TabIndex = 108;
-            this.buttonCharacterInventory9.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventory9.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonCharacterInventory7
-            // 
-            this.buttonCharacterInventory7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventory7.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventory7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventory7.FlatAppearance.BorderSize = 0;
-            this.buttonCharacterInventory7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventory7.Location = new System.Drawing.Point(192, 64);
-            this.buttonCharacterInventory7.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventory7.Name = "buttonCharacterInventory7";
-            this.buttonCharacterInventory7.Size = new System.Drawing.Size(64, 64);
-            this.buttonCharacterInventory7.TabIndex = 107;
-            this.buttonCharacterInventory7.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventory7.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonCharacterInventory6
-            // 
-            this.buttonCharacterInventory6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventory6.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventory6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventory6.FlatAppearance.BorderSize = 0;
-            this.buttonCharacterInventory6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventory6.Location = new System.Drawing.Point(128, 64);
-            this.buttonCharacterInventory6.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventory6.Name = "buttonCharacterInventory6";
-            this.buttonCharacterInventory6.Size = new System.Drawing.Size(64, 64);
-            this.buttonCharacterInventory6.TabIndex = 106;
-            this.buttonCharacterInventory6.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventory6.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonCharacterInventory4
-            // 
-            this.buttonCharacterInventory4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventory4.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventory4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventory4.FlatAppearance.BorderSize = 0;
-            this.buttonCharacterInventory4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventory4.Location = new System.Drawing.Point(0, 64);
-            this.buttonCharacterInventory4.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventory4.Name = "buttonCharacterInventory4";
-            this.buttonCharacterInventory4.Size = new System.Drawing.Size(64, 64);
-            this.buttonCharacterInventory4.TabIndex = 105;
-            this.buttonCharacterInventory4.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventory4.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonCharacterInventory5
-            // 
-            this.buttonCharacterInventory5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventory5.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventory5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventory5.FlatAppearance.BorderSize = 0;
-            this.buttonCharacterInventory5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventory5.Location = new System.Drawing.Point(64, 64);
-            this.buttonCharacterInventory5.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventory5.Name = "buttonCharacterInventory5";
-            this.buttonCharacterInventory5.Size = new System.Drawing.Size(64, 64);
-            this.buttonCharacterInventory5.TabIndex = 104;
-            this.buttonCharacterInventory5.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventory5.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonCharacterInventory3
-            // 
-            this.buttonCharacterInventory3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventory3.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventory3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventory3.FlatAppearance.BorderSize = 0;
-            this.buttonCharacterInventory3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventory3.Location = new System.Drawing.Point(192, 0);
-            this.buttonCharacterInventory3.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventory3.Name = "buttonCharacterInventory3";
-            this.buttonCharacterInventory3.Size = new System.Drawing.Size(64, 64);
-            this.buttonCharacterInventory3.TabIndex = 103;
-            this.buttonCharacterInventory3.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventory3.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonCharacterInventory2
-            // 
-            this.buttonCharacterInventory2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharacterInventory2.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCharacterInventory2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonCharacterInventory2.FlatAppearance.BorderSize = 0;
-            this.buttonCharacterInventory2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCharacterInventory2.Location = new System.Drawing.Point(128, 0);
-            this.buttonCharacterInventory2.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCharacterInventory2.Name = "buttonCharacterInventory2";
-            this.buttonCharacterInventory2.Size = new System.Drawing.Size(64, 64);
-            this.buttonCharacterInventory2.TabIndex = 102;
-            this.buttonCharacterInventory2.UseVisualStyleBackColor = false;
-            this.buttonCharacterInventory2.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
             // labelGameTime
             // 
             this.labelGameTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -996,42 +661,13 @@
             this.panelCharacterInventory.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
             this.panelCharacterInventory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelCharacterInventory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCharacterInventory.Controls.Add(this.panelCharacterInventoryPage);
+            this.panelCharacterInventory.Controls.Add(this.inventoryCharacter);
             this.panelCharacterInventory.Controls.Add(this.pictureBoxCharacterInventoryOwner);
-            this.panelCharacterInventory.Controls.Add(this.panelCharacterInventoryItems);
             this.panelCharacterInventory.Controls.Add(this.labelCharacterInventoryTitle);
             this.panelCharacterInventory.Location = new System.Drawing.Point(655, 76);
             this.panelCharacterInventory.Name = "panelCharacterInventory";
             this.panelCharacterInventory.Size = new System.Drawing.Size(311, 307);
             this.panelCharacterInventory.TabIndex = 85;
-            // 
-            // panelCharacterInventoryPage
-            // 
-            this.panelCharacterInventoryPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelCharacterInventoryPage.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelCharacterInventoryPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelCharacterInventoryPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCharacterInventoryPage.Controls.Add(this.labelCharacterInventoryPage);
-            this.panelCharacterInventoryPage.Controls.Add(this.buttonCharacterInventoryPageLeft);
-            this.panelCharacterInventoryPage.Controls.Add(this.buttonCharacterInventoryPageRight);
-            this.panelCharacterInventoryPage.Location = new System.Drawing.Point(29, 247);
-            this.panelCharacterInventoryPage.Name = "panelCharacterInventoryPage";
-            this.panelCharacterInventoryPage.Size = new System.Drawing.Size(258, 40);
-            this.panelCharacterInventoryPage.TabIndex = 110;
-            // 
-            // labelCharacterInventoryPage
-            // 
-            this.labelCharacterInventoryPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelCharacterInventoryPage.BackColor = System.Drawing.Color.Transparent;
-            this.labelCharacterInventoryPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelCharacterInventoryPage.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharacterInventoryPage.Location = new System.Drawing.Point(38, -1);
-            this.labelCharacterInventoryPage.Margin = new System.Windows.Forms.Padding(0);
-            this.labelCharacterInventoryPage.Name = "labelCharacterInventoryPage";
-            this.labelCharacterInventoryPage.Size = new System.Drawing.Size(180, 40);
-            this.labelCharacterInventoryPage.TabIndex = 154;
-            this.labelCharacterInventoryPage.Text = "Page: 1";
-            this.labelCharacterInventoryPage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBoxCharacterInventoryOwner
             // 
@@ -1194,11 +830,10 @@
             this.panelSeller.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
             this.panelSeller.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelSeller.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelSeller.Controls.Add(this.panelSellerInventoryPage);
+            this.panelSeller.Controls.Add(this.inventorySeller);
             this.panelSeller.Controls.Add(this.SellerInventoryOwner);
             this.panelSeller.Controls.Add(this.labelSellerItemsFor);
             this.panelSeller.Controls.Add(this.labelSellerInfo);
-            this.panelSeller.Controls.Add(this.panelSellerInventoryItems);
             this.panelSeller.Controls.Add(this.buttonSellerClose);
             this.panelSeller.Controls.Add(this.labelSellerTitle);
             this.panelSeller.Location = new System.Drawing.Point(338, 76);
@@ -1206,34 +841,6 @@
             this.panelSeller.Size = new System.Drawing.Size(311, 603);
             this.panelSeller.TabIndex = 102;
             this.panelSeller.Visible = false;
-            // 
-            // panelSellerInventoryPage
-            // 
-            this.panelSellerInventoryPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelSellerInventoryPage.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
-            this.panelSellerInventoryPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelSellerInventoryPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelSellerInventoryPage.Controls.Add(this.labelSellerInventoryPage);
-            this.panelSellerInventoryPage.Controls.Add(this.buttonSellerInventoryPageLeft);
-            this.panelSellerInventoryPage.Controls.Add(this.buttonSellerInventoryPageRight);
-            this.panelSellerInventoryPage.Location = new System.Drawing.Point(28, 544);
-            this.panelSellerInventoryPage.Name = "panelSellerInventoryPage";
-            this.panelSellerInventoryPage.Size = new System.Drawing.Size(258, 40);
-            this.panelSellerInventoryPage.TabIndex = 157;
-            // 
-            // labelSellerInventoryPage
-            // 
-            this.labelSellerInventoryPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelSellerInventoryPage.BackColor = System.Drawing.Color.Transparent;
-            this.labelSellerInventoryPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelSellerInventoryPage.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSellerInventoryPage.Location = new System.Drawing.Point(38, -1);
-            this.labelSellerInventoryPage.Margin = new System.Windows.Forms.Padding(0);
-            this.labelSellerInventoryPage.Name = "labelSellerInventoryPage";
-            this.labelSellerInventoryPage.Size = new System.Drawing.Size(180, 40);
-            this.labelSellerInventoryPage.TabIndex = 107;
-            this.labelSellerInventoryPage.Text = "Page: 1";
-            this.labelSellerInventoryPage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SellerInventoryOwner
             // 
@@ -1271,271 +878,6 @@
             this.labelSellerInfo.TabIndex = 150;
             this.labelSellerInfo.Text = "Welcome to my store! Here you may find all kinds of items! Only the best, at the " +
     "right price!\r\n";
-            // 
-            // panelSellerInventoryItems
-            // 
-            this.panelSellerInventoryItems.BackgroundImage = global::ROFL.Properties.Resources.Item_Blank;
-            this.panelSellerInventoryItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory15);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory14);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory12);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory13);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory11);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory10);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory8);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory9);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory7);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory6);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory4);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory5);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory3);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory2);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory0);
-            this.panelSellerInventoryItems.Controls.Add(this.buttonSellerInventory1);
-            this.panelSellerInventoryItems.Location = new System.Drawing.Point(28, 287);
-            this.panelSellerInventoryItems.Name = "panelSellerInventoryItems";
-            this.panelSellerInventoryItems.Size = new System.Drawing.Size(258, 258);
-            this.panelSellerInventoryItems.TabIndex = 151;
-            // 
-            // buttonSellerInventory15
-            // 
-            this.buttonSellerInventory15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory15.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory15.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory15.Location = new System.Drawing.Point(192, 192);
-            this.buttonSellerInventory15.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory15.Name = "buttonSellerInventory15";
-            this.buttonSellerInventory15.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory15.TabIndex = 115;
-            this.buttonSellerInventory15.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory15.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory14
-            // 
-            this.buttonSellerInventory14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory14.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory14.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory14.Location = new System.Drawing.Point(128, 192);
-            this.buttonSellerInventory14.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory14.Name = "buttonSellerInventory14";
-            this.buttonSellerInventory14.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory14.TabIndex = 114;
-            this.buttonSellerInventory14.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory14.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory12
-            // 
-            this.buttonSellerInventory12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory12.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory12.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory12.Location = new System.Drawing.Point(0, 192);
-            this.buttonSellerInventory12.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory12.Name = "buttonSellerInventory12";
-            this.buttonSellerInventory12.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory12.TabIndex = 113;
-            this.buttonSellerInventory12.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory12.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory13
-            // 
-            this.buttonSellerInventory13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory13.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory13.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory13.Location = new System.Drawing.Point(64, 192);
-            this.buttonSellerInventory13.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory13.Name = "buttonSellerInventory13";
-            this.buttonSellerInventory13.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory13.TabIndex = 112;
-            this.buttonSellerInventory13.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory13.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory11
-            // 
-            this.buttonSellerInventory11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory11.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory11.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory11.Location = new System.Drawing.Point(192, 128);
-            this.buttonSellerInventory11.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory11.Name = "buttonSellerInventory11";
-            this.buttonSellerInventory11.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory11.TabIndex = 111;
-            this.buttonSellerInventory11.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory11.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory10
-            // 
-            this.buttonSellerInventory10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory10.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory10.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory10.Location = new System.Drawing.Point(128, 128);
-            this.buttonSellerInventory10.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory10.Name = "buttonSellerInventory10";
-            this.buttonSellerInventory10.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory10.TabIndex = 110;
-            this.buttonSellerInventory10.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory10.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory8
-            // 
-            this.buttonSellerInventory8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory8.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory8.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory8.Location = new System.Drawing.Point(0, 128);
-            this.buttonSellerInventory8.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory8.Name = "buttonSellerInventory8";
-            this.buttonSellerInventory8.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory8.TabIndex = 109;
-            this.buttonSellerInventory8.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory8.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory9
-            // 
-            this.buttonSellerInventory9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory9.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory9.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory9.Location = new System.Drawing.Point(64, 128);
-            this.buttonSellerInventory9.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory9.Name = "buttonSellerInventory9";
-            this.buttonSellerInventory9.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory9.TabIndex = 108;
-            this.buttonSellerInventory9.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory9.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory7
-            // 
-            this.buttonSellerInventory7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory7.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory7.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory7.Location = new System.Drawing.Point(192, 64);
-            this.buttonSellerInventory7.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory7.Name = "buttonSellerInventory7";
-            this.buttonSellerInventory7.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory7.TabIndex = 107;
-            this.buttonSellerInventory7.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory7.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory6
-            // 
-            this.buttonSellerInventory6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory6.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory6.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory6.Location = new System.Drawing.Point(128, 64);
-            this.buttonSellerInventory6.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory6.Name = "buttonSellerInventory6";
-            this.buttonSellerInventory6.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory6.TabIndex = 106;
-            this.buttonSellerInventory6.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory6.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory4
-            // 
-            this.buttonSellerInventory4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory4.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory4.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory4.Location = new System.Drawing.Point(0, 64);
-            this.buttonSellerInventory4.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory4.Name = "buttonSellerInventory4";
-            this.buttonSellerInventory4.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory4.TabIndex = 105;
-            this.buttonSellerInventory4.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory4.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory5
-            // 
-            this.buttonSellerInventory5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory5.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory5.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory5.Location = new System.Drawing.Point(64, 64);
-            this.buttonSellerInventory5.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory5.Name = "buttonSellerInventory5";
-            this.buttonSellerInventory5.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory5.TabIndex = 104;
-            this.buttonSellerInventory5.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory5.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory3
-            // 
-            this.buttonSellerInventory3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory3.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory3.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory3.Location = new System.Drawing.Point(192, 0);
-            this.buttonSellerInventory3.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory3.Name = "buttonSellerInventory3";
-            this.buttonSellerInventory3.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory3.TabIndex = 103;
-            this.buttonSellerInventory3.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory3.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory2
-            // 
-            this.buttonSellerInventory2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory2.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory2.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory2.Location = new System.Drawing.Point(128, 0);
-            this.buttonSellerInventory2.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory2.Name = "buttonSellerInventory2";
-            this.buttonSellerInventory2.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory2.TabIndex = 102;
-            this.buttonSellerInventory2.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory2.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory0
-            // 
-            this.buttonSellerInventory0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory0.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory0.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory0.Location = new System.Drawing.Point(0, 0);
-            this.buttonSellerInventory0.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory0.Name = "buttonSellerInventory0";
-            this.buttonSellerInventory0.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory0.TabIndex = 101;
-            this.buttonSellerInventory0.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory0.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonSellerInventory1
-            // 
-            this.buttonSellerInventory1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSellerInventory1.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSellerInventory1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSellerInventory1.FlatAppearance.BorderSize = 0;
-            this.buttonSellerInventory1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSellerInventory1.Location = new System.Drawing.Point(64, 0);
-            this.buttonSellerInventory1.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSellerInventory1.Name = "buttonSellerInventory1";
-            this.buttonSellerInventory1.Size = new System.Drawing.Size(64, 64);
-            this.buttonSellerInventory1.TabIndex = 86;
-            this.buttonSellerInventory1.UseVisualStyleBackColor = false;
-            this.buttonSellerInventory1.Click += new System.EventHandler(this.buttonInventoryItem_Click);
             // 
             // labelSellerTitle
             // 
@@ -1737,8 +1079,8 @@
             this.panelRoomLoot.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
             this.panelRoomLoot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelRoomLoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelRoomLoot.Controls.Add(this.inventoryEnemy);
             this.panelRoomLoot.Controls.Add(this.pictureBoxEnemyInventoryOwner);
-            this.panelRoomLoot.Controls.Add(this.panelEnemyInventoryItems);
             this.panelRoomLoot.Controls.Add(this.labelRoomLootItems);
             this.panelRoomLoot.Controls.Add(this.labelRoomLootMoneyFor);
             this.panelRoomLoot.Controls.Add(this.labelRoomLootTitle);
@@ -1761,143 +1103,6 @@
             this.pictureBoxEnemyInventoryOwner.Size = new System.Drawing.Size(40, 40);
             this.pictureBoxEnemyInventoryOwner.TabIndex = 154;
             this.pictureBoxEnemyInventoryOwner.TabStop = false;
-            // 
-            // panelEnemyInventoryItems
-            // 
-            this.panelEnemyInventoryItems.BackgroundImage = global::ROFL.Properties.Resources.Item_Blank;
-            this.panelEnemyInventoryItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelEnemyInventoryItems.Controls.Add(this.buttonEnemyInventory7);
-            this.panelEnemyInventoryItems.Controls.Add(this.buttonEnemyInventory6);
-            this.panelEnemyInventoryItems.Controls.Add(this.buttonEnemyInventory4);
-            this.panelEnemyInventoryItems.Controls.Add(this.buttonEnemyInventory5);
-            this.panelEnemyInventoryItems.Controls.Add(this.buttonEnemyInventory3);
-            this.panelEnemyInventoryItems.Controls.Add(this.buttonEnemyInventory2);
-            this.panelEnemyInventoryItems.Controls.Add(this.buttonEnemyInventory0);
-            this.panelEnemyInventoryItems.Controls.Add(this.buttonEnemyInventory1);
-            this.panelEnemyInventoryItems.Location = new System.Drawing.Point(27, 152);
-            this.panelEnemyInventoryItems.Name = "panelEnemyInventoryItems";
-            this.panelEnemyInventoryItems.Size = new System.Drawing.Size(258, 130);
-            this.panelEnemyInventoryItems.TabIndex = 151;
-            // 
-            // buttonEnemyInventory7
-            // 
-            this.buttonEnemyInventory7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonEnemyInventory7.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEnemyInventory7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonEnemyInventory7.FlatAppearance.BorderSize = 0;
-            this.buttonEnemyInventory7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEnemyInventory7.Location = new System.Drawing.Point(192, 64);
-            this.buttonEnemyInventory7.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonEnemyInventory7.Name = "buttonEnemyInventory7";
-            this.buttonEnemyInventory7.Size = new System.Drawing.Size(64, 64);
-            this.buttonEnemyInventory7.TabIndex = 107;
-            this.buttonEnemyInventory7.UseVisualStyleBackColor = false;
-            this.buttonEnemyInventory7.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonEnemyInventory6
-            // 
-            this.buttonEnemyInventory6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonEnemyInventory6.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEnemyInventory6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonEnemyInventory6.FlatAppearance.BorderSize = 0;
-            this.buttonEnemyInventory6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEnemyInventory6.Location = new System.Drawing.Point(128, 64);
-            this.buttonEnemyInventory6.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonEnemyInventory6.Name = "buttonEnemyInventory6";
-            this.buttonEnemyInventory6.Size = new System.Drawing.Size(64, 64);
-            this.buttonEnemyInventory6.TabIndex = 106;
-            this.buttonEnemyInventory6.UseVisualStyleBackColor = false;
-            this.buttonEnemyInventory6.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonEnemyInventory4
-            // 
-            this.buttonEnemyInventory4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonEnemyInventory4.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEnemyInventory4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonEnemyInventory4.FlatAppearance.BorderSize = 0;
-            this.buttonEnemyInventory4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEnemyInventory4.Location = new System.Drawing.Point(0, 64);
-            this.buttonEnemyInventory4.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonEnemyInventory4.Name = "buttonEnemyInventory4";
-            this.buttonEnemyInventory4.Size = new System.Drawing.Size(64, 64);
-            this.buttonEnemyInventory4.TabIndex = 105;
-            this.buttonEnemyInventory4.UseVisualStyleBackColor = false;
-            this.buttonEnemyInventory4.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonEnemyInventory5
-            // 
-            this.buttonEnemyInventory5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonEnemyInventory5.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEnemyInventory5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonEnemyInventory5.FlatAppearance.BorderSize = 0;
-            this.buttonEnemyInventory5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEnemyInventory5.Location = new System.Drawing.Point(64, 64);
-            this.buttonEnemyInventory5.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonEnemyInventory5.Name = "buttonEnemyInventory5";
-            this.buttonEnemyInventory5.Size = new System.Drawing.Size(64, 64);
-            this.buttonEnemyInventory5.TabIndex = 104;
-            this.buttonEnemyInventory5.UseVisualStyleBackColor = false;
-            this.buttonEnemyInventory5.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonEnemyInventory3
-            // 
-            this.buttonEnemyInventory3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonEnemyInventory3.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEnemyInventory3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonEnemyInventory3.FlatAppearance.BorderSize = 0;
-            this.buttonEnemyInventory3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEnemyInventory3.Location = new System.Drawing.Point(192, 0);
-            this.buttonEnemyInventory3.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonEnemyInventory3.Name = "buttonEnemyInventory3";
-            this.buttonEnemyInventory3.Size = new System.Drawing.Size(64, 64);
-            this.buttonEnemyInventory3.TabIndex = 103;
-            this.buttonEnemyInventory3.UseVisualStyleBackColor = false;
-            this.buttonEnemyInventory3.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonEnemyInventory2
-            // 
-            this.buttonEnemyInventory2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonEnemyInventory2.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEnemyInventory2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonEnemyInventory2.FlatAppearance.BorderSize = 0;
-            this.buttonEnemyInventory2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEnemyInventory2.Location = new System.Drawing.Point(128, 0);
-            this.buttonEnemyInventory2.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonEnemyInventory2.Name = "buttonEnemyInventory2";
-            this.buttonEnemyInventory2.Size = new System.Drawing.Size(64, 64);
-            this.buttonEnemyInventory2.TabIndex = 102;
-            this.buttonEnemyInventory2.UseVisualStyleBackColor = false;
-            this.buttonEnemyInventory2.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonEnemyInventory0
-            // 
-            this.buttonEnemyInventory0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonEnemyInventory0.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEnemyInventory0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonEnemyInventory0.FlatAppearance.BorderSize = 0;
-            this.buttonEnemyInventory0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEnemyInventory0.Location = new System.Drawing.Point(0, 0);
-            this.buttonEnemyInventory0.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonEnemyInventory0.Name = "buttonEnemyInventory0";
-            this.buttonEnemyInventory0.Size = new System.Drawing.Size(64, 64);
-            this.buttonEnemyInventory0.TabIndex = 101;
-            this.buttonEnemyInventory0.UseVisualStyleBackColor = false;
-            this.buttonEnemyInventory0.Click += new System.EventHandler(this.buttonInventoryItem_Click);
-            // 
-            // buttonEnemyInventory1
-            // 
-            this.buttonEnemyInventory1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonEnemyInventory1.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEnemyInventory1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonEnemyInventory1.FlatAppearance.BorderSize = 0;
-            this.buttonEnemyInventory1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEnemyInventory1.Location = new System.Drawing.Point(64, 0);
-            this.buttonEnemyInventory1.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonEnemyInventory1.Name = "buttonEnemyInventory1";
-            this.buttonEnemyInventory1.Size = new System.Drawing.Size(64, 64);
-            this.buttonEnemyInventory1.TabIndex = 86;
-            this.buttonEnemyInventory1.UseVisualStyleBackColor = false;
-            this.buttonEnemyInventory1.Click += new System.EventHandler(this.buttonInventoryItem_Click);
             // 
             // labelRoomLootItems
             // 
@@ -1984,6 +1189,33 @@
             this.labelRoom.TabIndex = 78;
             this.labelRoom.Text = "Room";
             // 
+            // inventoryCharacter
+            // 
+            this.inventoryCharacter.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("inventoryCharacter.BackgroundImage")));
+            this.inventoryCharacter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inventoryCharacter.Location = new System.Drawing.Point(28, 47);
+            this.inventoryCharacter.Name = "inventoryCharacter";
+            this.inventoryCharacter.Size = new System.Drawing.Size(258, 234);
+            this.inventoryCharacter.TabIndex = 153;
+            // 
+            // inventorySeller
+            // 
+            this.inventorySeller.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("inventorySeller.BackgroundImage")));
+            this.inventorySeller.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inventorySeller.Location = new System.Drawing.Point(29, 285);
+            this.inventorySeller.Name = "inventorySeller";
+            this.inventorySeller.Size = new System.Drawing.Size(258, 298);
+            this.inventorySeller.TabIndex = 154;
+            // 
+            // inventoryEnemy
+            // 
+            this.inventoryEnemy.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("inventoryEnemy.BackgroundImage")));
+            this.inventoryEnemy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inventoryEnemy.Location = new System.Drawing.Point(28, 147);
+            this.inventoryEnemy.Name = "inventoryEnemy";
+            this.inventoryEnemy.Size = new System.Drawing.Size(258, 130);
+            this.inventoryEnemy.TabIndex = 154;
+            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1992,12 +1224,11 @@
             this.BackgroundImage = global::ROFL.Properties.Resources.background1_Game;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1350, 691);
-            this.Controls.Add(this.panelSeller);
             this.Controls.Add(this.panelRoom);
+            this.Controls.Add(this.panelSeller);
             this.Controls.Add(this.panelVillage);
             this.Controls.Add(this.labelLocation);
             this.Controls.Add(this.labelLocationFor);
-            this.Controls.Add(this.buttonCharacterInventoryToggle);
             this.Controls.Add(this.panelItem);
             this.Controls.Add(this.panelCharacterInventory);
             this.Controls.Add(this.buttonMaximizeMinimize);
@@ -2021,10 +1252,8 @@
             this.panelCharacterMoney.ResumeLayout(false);
             this.panelCharacterMoney.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterMoney)).EndInit();
-            this.panelCharacterInventoryItems.ResumeLayout(false);
             this.panelCharacterInventory.ResumeLayout(false);
             this.panelCharacterInventory.PerformLayout();
-            this.panelCharacterInventoryPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacterInventoryOwner)).EndInit();
             this.panelItem.ResumeLayout(false);
             this.panelItem.PerformLayout();
@@ -2036,9 +1265,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemCost)).EndInit();
             this.panelSeller.ResumeLayout(false);
             this.panelSeller.PerformLayout();
-            this.panelSellerInventoryPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SellerInventoryOwner)).EndInit();
-            this.panelSellerInventoryItems.ResumeLayout(false);
             this.panelVillage.ResumeLayout(false);
             this.panelVillage.PerformLayout();
             this.panelRoom.ResumeLayout(false);
@@ -2049,7 +1276,6 @@
             this.panelRoomLoot.ResumeLayout(false);
             this.panelRoomLoot.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEnemyInventoryOwner)).EndInit();
-            this.panelEnemyInventoryItems.ResumeLayout(false);
             this.panelRoomLootMoney.ResumeLayout(false);
             this.panelRoomLootMoney.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRoomLootMoney)).EndInit();
@@ -2077,11 +1303,9 @@
         private System.Windows.Forms.Label labelGameTimeFor;
         private System.Windows.Forms.Button buttonMaximizeMinimize;
         private System.Windows.Forms.Panel panelCharacterInventory;
-        private System.Windows.Forms.Button buttonCharacterInventory1;
         private System.Windows.Forms.Label labelCharacterInventoryTitle;
         private System.Windows.Forms.Panel panelItem;
         private System.Windows.Forms.Label labelItemName;
-        private System.Windows.Forms.Button buttonCharacterInventory0;
         private System.Windows.Forms.Panel panelItemCost;
         private System.Windows.Forms.Label labelItemCost;
         private System.Windows.Forms.PictureBox pictureBoxItemCost;
@@ -2091,7 +1315,6 @@
         private System.Windows.Forms.Button buttonItemTrade;
         private System.Windows.Forms.Button buttonTrash;
         private System.Windows.Forms.Label labelItemPanelTitle;
-        private System.Windows.Forms.Button buttonCharacterInventoryToggle;
         private System.Windows.Forms.Label labelCharacterMoneyFor;
         private System.Windows.Forms.Panel panelCharacterMoney;
         private System.Windows.Forms.Label labelCharacterMoney;
@@ -2099,9 +1322,6 @@
         private System.Windows.Forms.Panel panelSeller;
         private System.Windows.Forms.Button buttonSellerClose;
         private System.Windows.Forms.Label labelSellerTitle;
-        private System.Windows.Forms.Button buttonSellerInventoryPageRight;
-        private System.Windows.Forms.Button buttonSellerInventoryPageLeft;
-        private System.Windows.Forms.Label labelSellerInventoryPage;
         private System.Windows.Forms.Label labelLocation;
         private System.Windows.Forms.Label labelLocationFor;
         private System.Windows.Forms.Button buttonLocation1;
@@ -2135,56 +1355,17 @@
         private System.Windows.Forms.ProgressBar progressBarCharacterExperience;
         private System.Windows.Forms.PictureBox pictureBoxCharacterExperience;
         private System.Windows.Forms.Button buttonNewGame;
-        private System.Windows.Forms.Panel panelCharacterInventoryItems;
-        private System.Windows.Forms.Button buttonCharacterInventory11;
-        private System.Windows.Forms.Button buttonCharacterInventory10;
-        private System.Windows.Forms.Button buttonCharacterInventory8;
-        private System.Windows.Forms.Button buttonCharacterInventory9;
-        private System.Windows.Forms.Button buttonCharacterInventory7;
-        private System.Windows.Forms.Button buttonCharacterInventory6;
-        private System.Windows.Forms.Button buttonCharacterInventory4;
-        private System.Windows.Forms.Button buttonCharacterInventory5;
-        private System.Windows.Forms.Button buttonCharacterInventory3;
-        private System.Windows.Forms.Button buttonCharacterInventory2;
-        private System.Windows.Forms.Panel panelEnemyInventoryItems;
-        private System.Windows.Forms.Button buttonEnemyInventory7;
-        private System.Windows.Forms.Button buttonEnemyInventory6;
-        private System.Windows.Forms.Button buttonEnemyInventory4;
-        private System.Windows.Forms.Button buttonEnemyInventory5;
-        private System.Windows.Forms.Button buttonEnemyInventory3;
-        private System.Windows.Forms.Button buttonEnemyInventory2;
-        private System.Windows.Forms.Button buttonEnemyInventory0;
-        private System.Windows.Forms.Button buttonEnemyInventory1;
         private System.Windows.Forms.Panel panelItemImage;
         private System.Windows.Forms.Button buttonItem;
-        private System.Windows.Forms.Panel panelSellerInventoryItems;
-        private System.Windows.Forms.Button buttonSellerInventory15;
-        private System.Windows.Forms.Button buttonSellerInventory14;
-        private System.Windows.Forms.Button buttonSellerInventory12;
-        private System.Windows.Forms.Button buttonSellerInventory13;
-        private System.Windows.Forms.Button buttonSellerInventory11;
-        private System.Windows.Forms.Button buttonSellerInventory10;
-        private System.Windows.Forms.Button buttonSellerInventory8;
-        private System.Windows.Forms.Button buttonSellerInventory9;
-        private System.Windows.Forms.Button buttonSellerInventory7;
-        private System.Windows.Forms.Button buttonSellerInventory6;
-        private System.Windows.Forms.Button buttonSellerInventory4;
-        private System.Windows.Forms.Button buttonSellerInventory5;
-        private System.Windows.Forms.Button buttonSellerInventory3;
-        private System.Windows.Forms.Button buttonSellerInventory2;
-        private System.Windows.Forms.Button buttonSellerInventory0;
-        private System.Windows.Forms.Button buttonSellerInventory1;
         private System.Windows.Forms.Label labelSellerItemsFor;
         private System.Windows.Forms.Label labelSellerInfo;
         private System.Windows.Forms.PictureBox pictureBoxItemOwner;
         private System.Windows.Forms.PictureBox pictureBoxCharacterInventoryOwner;
         private System.Windows.Forms.PictureBox SellerInventoryOwner;
         private System.Windows.Forms.PictureBox pictureBoxEnemyInventoryOwner;
-        private System.Windows.Forms.Panel panelCharacterInventoryPage;
-        private System.Windows.Forms.Label labelCharacterInventoryPage;
-        private System.Windows.Forms.Button buttonCharacterInventoryPageLeft;
-        private System.Windows.Forms.Button buttonCharacterInventoryPageRight;
-        private System.Windows.Forms.Panel panelSellerInventoryPage;
+        private Inventory inventoryCharacter;
+        private Inventory inventorySeller;
+        private Inventory inventoryEnemy;
     }
 }
 
