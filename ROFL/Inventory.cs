@@ -11,9 +11,9 @@ namespace ROFL
     public partial class Inventory : UserControl
     {
         /// <summary>
-        /// Height of page controls.
+        /// Size of inventory management controls.
         /// </summary>
-        public const int PageControlsHeight = 40;
+        public const int ManagementControlSize = 30;
 
         /// <summary>
         /// Size (width/height) of item.
@@ -95,7 +95,7 @@ namespace ROFL
             PageSize = pageSize;
             UpdateSelectedItem = updateSelection;
 
-            SetPageVisibility();
+            UpdateManagementControls();
 
             _itemButtons = new Button[PageSize];
 
@@ -123,20 +123,55 @@ namespace ROFL
         }
 
         /// <summary>
-        /// Set page visibility and user control height is IsPaged.
+        /// Update Management Controls.
         /// </summary>
-        private void SetPageVisibility()
+        private void UpdateManagementControls()
+        {
+            UpdatePageControls();
+            UpdateSortControls();
+        }
+
+        private Size InventoryItemsSize()
         {
             var width = ItemSize * ItemsPerRow + Padding;
             var height = ItemRows * ItemSize + Padding;
 
+            return new Size(width, height);
+        }
+
+        /// <summary>
+        /// Update Page Controls, hiding them if not IsPaged.
+        /// </summary>
+        private void UpdatePageControls()
+        {
+            var itemsSize = InventoryItemsSize();
+            var width = itemsSize.Width;
+            var height = itemsSize.Height;
+
             panelPage.Visible = IsPaged;
             if (IsPaged)
             {
-                height += PageControlsHeight;
+                height += ManagementControlSize;
                 labelPage.Text = $"Page: {Page + 1}";
             }
             Size = new Size(width, height);
+        }
+
+        /// <summary>
+        /// Update Sort Controls, placing them appropriately.
+        /// </summary>
+        private void UpdateSortControls()
+        {
+            var itemsSize = InventoryItemsSize();
+
+            var x = itemsSize.Width - ManagementControlSize - Padding;
+            var y = itemsSize.Height - Padding;
+            
+            if (! IsPaged)
+            {
+                y -= ManagementControlSize;
+            }
+            panelSort.Location = new Point(x, y);
         }
 
         /// <summary>
@@ -149,7 +184,7 @@ namespace ROFL
                 UpdateItem(index);
             }
 
-            SetPageVisibility();
+            UpdateManagementControls();
 
             if (Entity.Type == EntityType.Character)
             {
